@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/Shinobi881/tic-tac-toe/issues"
   },
-  "homepage": "https://github.com/Shinobi881/tic-tac-toe#readme"
+  "homepage": "https://github.com/Shinobi881/tic-tac-toe#readme",
+  "devDependencies": {
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react": "^0.14.7"
+  }
 }
