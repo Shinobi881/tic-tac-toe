@@ -5,9 +5,9 @@ import GameBoard from './components/gameboard';
 export default class App extends Component {
    render() { 
     return(
-    <h3>
+    <h1>
       <GameBoard />
-    </h3>
+    </h1>
     );
   }
 }
