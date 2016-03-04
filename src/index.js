@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import GameBoard from './components/gameboard';
+import './stylesheets/main.scss';
+
 const test = 'test';
 
 const App = () => {
    return (
-    <h1>Hello</h1>
+    <h1>
+      <GameBoard />
+    </h1>
     );
 }
 
