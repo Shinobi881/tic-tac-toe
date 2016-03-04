@@ -9,10 +9,9 @@ class GameRow extends Component {
   render() {
     return (
       <tr className="game-row">
-        <GamePiece id="game-square">Square</GamePiece>
-        <GamePiece id="game-square">Square</GamePiece>
-        <GamePiece id="game-square">Square</GamePiece>
-      
+        <GamePiece id="game-square" />
+        <GamePiece id="game-square" />
+        <GamePiece id="game-square" />      
       </tr>
         
     );

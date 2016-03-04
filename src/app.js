@@ -4,7 +4,7 @@ import GameBoard from './components/gameboard';
 
 export default class App extends Component {
    render() { 
-    return(
+    return (
     <div>
       <GameBoard />
     </div>
