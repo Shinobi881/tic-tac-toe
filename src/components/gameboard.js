@@ -1,7 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
+import GameRow from './gamerow';
+// import GamePiece from './gamepiece';
 
-const GameBoard = () => {
-  return <div className="game-board">GameBoard</div>
+
+class GameBoard extends Component {
+  constructor(props){
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+    <table className="game-board">
+      <tbody>
+        <GameRow id="row-0" />
+      </tbody>
+    </table>
+    );
+  }
 }
 
-export default GameBoard
+export default GameBoard;

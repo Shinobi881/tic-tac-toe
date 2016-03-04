@@ -5,9 +5,11 @@ import GameBoard from './components/gameboard';
 export default class App extends Component {
    render() { 
     return(
-    <h1>
+    <div>
       <GameBoard />
-    </h1>
+    </div>
     );
   }
 }
+
+export default App;
