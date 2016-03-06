@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {squareClick} from '../actions/actions_index';
+import {bindActionCreators} from 'redux';
 
 //import GameRow from './gamerow';
 //import GamePiece from './gamepiece';
@@ -16,7 +18,14 @@ class GameBoard extends Component {
     return rowSet.map((square, squareIndex) => {
       let squareKey = rowsIndex.toString() + squareIndex.toString();
       return (
-        <td key={squareKey} className="square" id={squareKey}>{rowSet[0]}</td>
+        <td 
+          key={squareKey} 
+          className="square" 
+          id={squareKey}
+          onClick={() => this.props.squareClick(square)}
+        >
+          {rowSet[0]}
+        </td>
       )
     })
   }
@@ -48,7 +57,11 @@ function mapStateToProps (state) {
   };
 }
 
-export default connect(mapStateToProps)(GameBoard);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({squareClick: squareClick}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameBoard);
 
 
 // <GameRow id="row-0" />

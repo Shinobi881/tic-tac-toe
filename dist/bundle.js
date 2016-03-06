@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a5c9c2dfcf833a4f6247"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "82295cb0a4b149cf7a9b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -29574,10 +29574,11 @@
 	    value: function renderRows() {
 	      var _this2 = this;
 	
+	      console.log(this.props);
 	      return this.props.gameBoard.map(function (rows, rowIndex) {
 	        return _react2.default.createElement(
 	          'tr',
-	          { key: index, className: 'game-row' },
+	          { key: rowIndex, className: 'game-row' },
 	          _this2.renderSquares(rows, rowIndex)
 	        );
 	      });
@@ -29602,11 +29603,11 @@
 	
 	function mapStateToProps(state) {
 	  return {
-	    books: state.books
+	    gameBoard: state.gameBoard
 	  };
 	}
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(BookList);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(GameBoard);
 	
 	// <GameRow id="row-0" />
 	// <GameRow id="row-1" />
@@ -29786,7 +29787,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".container .game-board {\n  border-style: solid;\n  border-color: black;\n  border-width: 10px;\n  table-layout: auto;\n  width: 600px;\n  height: 200px; }\n\n.container .game-row {\n  border-style: solid;\n  border-color: black;\n  border-width: 10px;\n  width: 200px;\n  height: 100px; }\n\n.container .game-square {\n  height: 50px;\n  width: 50px;\n  background-color: green; }\n", ""]);
+	exports.push([module.id, ".container .game-board {\n  border-style: solid;\n  border-color: black;\n  border-width: 10px;\n  table-layout: auto;\n  width: 600px;\n  height: 200px; }\n\n.container .game-row {\n  border-style: solid;\n  border-color: black;\n  border-width: 10px;\n  width: 200px;\n  height: 100px; }\n\n.container .square {\n  height: 50px;\n  width: 50px;\n  background-color: green; }\n\n.container .game-row {\n  border-style: solid;\n  border-color: black;\n  border-width: 10px;\n  width: 200px;\n  height: 100px; }\n\n.container .game-square {\n  height: 50px;\n  width: 50px;\n  background-color: green; }\n", ""]);
 	
 	// exports
 
@@ -30121,6 +30122,13 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// const rootReducer = combineReducers({
+	//   gameBoard: GameBoardReducer
+	// });
+	
+	// export default rootReducer;
+	
+	//console.log('Game reducer', GameBoardReducer);
 	var rootReducer = (0, _redux.combineReducers)({
 	  gameBoard: _reducer_gameboard2.default
 	});
@@ -30138,10 +30146,21 @@
 	
 	"use strict";
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	var gameboard_reducer = function gameboard_reducer() {
 	  return [[[0], [0], [0]], [[0], [0], [0]], [[0], [0], [0]]];
 	};
 	
+	exports.default = gameboard_reducer;
+	
+	// [
+	//     {row0:[[0],[0],[0]]},
+	//     {row1:[[0],[0],[0]]},
+	//     {row2:[[0],[0],[0]]}
+	//   ]
+
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(267); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_gameboard.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
