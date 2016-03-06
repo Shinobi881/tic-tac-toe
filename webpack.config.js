@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  devtool: 'sourcemap',
   entry: [
     'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
     'webpack/hot/only-dev-server',
