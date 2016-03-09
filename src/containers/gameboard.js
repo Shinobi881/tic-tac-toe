@@ -30,13 +30,16 @@ class GameBoard extends Component {
       )
     })
   }
-  renderRows() {
+  renderRows(element) {
+    if (!this.props.gameBoard) {
+      return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
+    }
     return this.props.gameBoard.map((rows, rowIndex) => {
-      return (
-        <tr key={rowIndex}className="game-row">
-          {this.renderSquares(rows, rowIndex)}
-        </tr>
-      )  
+
+      console.log(element.key);
+      console.log(element.props);
+      // element.props.key = rowIndex;
+      return element;
     });
   }
 
@@ -44,7 +47,7 @@ class GameBoard extends Component {
     return (
     <table className="game-board">
       <tbody>
-       <GameRow />
+        {this.renderRows(<GameRow />)}
       </tbody>
     </table>
     );
@@ -52,6 +55,7 @@ class GameBoard extends Component {
 }
 
 function mapStateToProps (state) {
+  console.log(state);
   return {
     gameBoard: state.gameBoard, 
   };

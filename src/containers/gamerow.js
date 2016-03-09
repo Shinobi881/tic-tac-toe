@@ -13,7 +13,6 @@ class GameRow extends Component {
   }
   
   renderSquares(rowSet, rowsIndex) {
-    console.log('rowSet: ', this.props.gameRow);
     if (!this.props.gameRow) {
       return (        
         <td><h2>Please choose a gameboard size!</h2></td>        
@@ -47,7 +46,6 @@ class GameRow extends Component {
 }
 
 function mapStateToProps(state) {
- console.log('gameRow state: ', state)
   return {
     gameRow: state.gameBoard,
     initialState: state.initialState
@@ -56,4 +54,3 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps)(GameRow);
-// export default GameRow;

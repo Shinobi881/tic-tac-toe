@@ -29,7 +29,6 @@ function makeBoard(rowCreator, boardSize) {
     board.push(newRow);
   }
   
-  console.dir(board);
   return {
     type: MAKE_BOARD,
     payload: board
@@ -45,7 +44,6 @@ function initialState() {
   }
 }
 function getBoardSize(size) {
-  console.log(size);
   return {
     type: GET_BOARD_SIZE,
     payload: size
