@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {makeRows, makeBoard} from '../actions/actions_index';
+import {makeRows, makeBoard, getBoardSize} from '../actions/actions_index';
 
 class BoardSize extends Component {
   constructor(props) {
@@ -11,14 +11,16 @@ class BoardSize extends Component {
     this.state = {term: ''};
     // this.onInputChange = this.onInputChange.bind(this);
   }
+  
   onInputChange(event) {
     // Let's go get our boardsize
-    console.log(event.target.value)
+    // console.log(event.target.value)
     this.setState({term: event.target.value });
   }
   onFormSubmit(event) {
     event.preventDefault();
     this.props.makeBoard(makeRows, this.state.term);
+    this.props.getBoardSize(this.state.term);
     this.setState({term: ''});
   }
   render() {
@@ -40,12 +42,12 @@ class BoardSize extends Component {
 
 function mapStateToProps(state) {
   return {
-    size: sta
+    size: state.boardSize
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ makeBoard }, dispatch);
+  return bindActionCreators({ makeBoard, getBoardSize }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(BoardSize);

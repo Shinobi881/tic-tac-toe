@@ -10,10 +10,10 @@ export default class App extends Component {
     <div>
       <BoardSize />
       <GameBoard />
-      <GameRow />
+      
     </div>
     );
   }
 }
-
+// 
 export default App;

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {squareClick} from '../actions/actions_index';
 import {bindActionCreators} from 'redux';
+import GameRow from './gamerow';
 
-//import GameRow from './gamerow';
+import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
+
 //import GamePiece from './gamepiece';
 
 
@@ -11,9 +13,8 @@ class GameBoard extends Component {
   constructor(props){
     super(props);
     this.state = {};
+
   }
-
-
   renderSquares(rowSet, rowsIndex) {
     return rowSet.map((square, squareIndex) => {
       let squareKey = rowsIndex.toString() + squareIndex.toString();
@@ -30,7 +31,6 @@ class GameBoard extends Component {
     })
   }
   renderRows() {
-    //console.log(this.props);
     return this.props.gameBoard.map((rows, rowIndex) => {
       return (
         <tr key={rowIndex}className="game-row">
@@ -44,7 +44,7 @@ class GameBoard extends Component {
     return (
     <table className="game-board">
       <tbody>
-        {this.renderRows()}
+       <GameRow />
       </tbody>
     </table>
     );
@@ -53,7 +53,7 @@ class GameBoard extends Component {
 
 function mapStateToProps (state) {
   return {
-    gameBoard: state.gameBoard
+    gameBoard: state.gameBoard, 
   };
 }
 
@@ -62,8 +62,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameBoard);
-
-
-// <GameRow id="row-0" />
-// <GameRow id="row-1" />
-// <GameRow id="row-2" />

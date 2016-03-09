@@ -7,7 +7,13 @@
 //   return state;
 // }
 
+
+
 export default function newReducer(state = null, action) {
-  console.log(action.type);
+  switch (action.type) {
+    case 'MAKE_ROWS':
+      return
+  }
+
   return [[0, 'X'],[1, 'O'],[2, 'X']]
 }
