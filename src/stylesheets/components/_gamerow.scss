@@ -1,7 +1,23 @@
-.game-row {
+.game-board {
+  border-style: solid;
+  border-color: black;
+  border-width: 10px; 
+  table-layout: auto;
+  width: 600px;
+  height: 200px;
+}
+
+.game-row-test {
   border-style: solid;
   border-color: black;
   border-width: 10px; 
   width: 200px;
   height: 100px;
+}
+
+
+.square-test {
+  height: 50px;
+  width: 50px;
+  background-color: green;
 }

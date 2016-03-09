@@ -30,7 +30,7 @@ class GameBoard extends Component {
     })
   }
   renderRows() {
-    console.log(this.props);
+    //console.log(this.props);
     return this.props.gameBoard.map((rows, rowIndex) => {
       return (
         <tr key={rowIndex}className="game-row">

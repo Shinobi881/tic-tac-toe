@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import GameBoard from './containers/gameboard';
 import BoardSize from './containers/board-size';
+import GameRow from './containers/gamerow';
 
 
 export default class App extends Component {
@@ -9,6 +10,7 @@ export default class App extends Component {
     <div>
       <BoardSize />
       <GameBoard />
+      <GameRow />
     </div>
     );
   }

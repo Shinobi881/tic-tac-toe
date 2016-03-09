@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import GameBoardReducer from './reducer_gameboard';
-// import GameRowsReducer from './reducer_gamerow';
+import GameRowReducer from './reducer_gamerow';
 
 const rootReducer = combineReducers({
   gameBoard: GameBoardReducer,
-  // gameRows: GameRowsReducer
+  gameRow: GameRowReducer
 });
 
 export default rootReducer;
