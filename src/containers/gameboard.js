@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {squareClick} from '../actions/actions_index';
 import {bindActionCreators} from 'redux';
 import GameRow from './gamerow';
-// import  from '../components/gamrow';
+import  newRow from '../components/gamerow';
 
 import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
 
@@ -31,17 +31,25 @@ class GameBoard extends Component {
       )
     })
   }
-  renderRows(element) {
-    if (!this.props.gameBoard) {
-      return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
-    }
-    return this.props.gameBoard.map((rows, rowIndex) => {
+  renderRows(props, index) {
+    // console.log(props)
+    // if (props) {
+    //   return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
+    // }
+    // return props.map((rows, rowIndex) => {
 
       // console.log(element.key);
-      console.log('testing prop edits', element);
+      // console.log('rows', rows);
       // element.props.key = rowIndex;
-      return element;
-    });
+      // return <tr><td>props</td></tr>;
+    // console.log('test', newRow(props))
+    // });
+
+    return (
+      <tr key={index}>
+        {newRow(props)}
+      </tr>
+    )
   }
   // renderSquares(rowSet, rowsIndex) {
   //   let rowMap = [];
@@ -62,10 +70,14 @@ class GameBoard extends Component {
   // }
 
   render() {
+    if (!this.props.gameBoard) {
+      return <h1>Please choose a gameboard size!</h1>
+    }
     return (
+
     <table className="game-board">
       <tbody>
-        {this.renderRows(<GameRow />)}
+        {this.props.gameBoard.rows.map(this.renderRows)}
       </tbody>
     </table>
     );
@@ -73,9 +85,9 @@ class GameBoard extends Component {
 }
 
 function mapStateToProps (state) {
-  console.log(state);
+  //console.log(state);
   return {
-    gameBoard: state.gameBoard, 
+    gameBoard: state.gameBoard
   };
 }
 

@@ -1,22 +1,23 @@
 import React from 'react';
 
-export default (props) => {
+export default (data) => {
   let rowMap = [];
-  console.log('newProps', props)
-  // props.forEach(function (squareArr) {    
-  //   rowMap = squareArr.row.map((square, squareIndex) => {
-  //     return (
+  console.log('newProps', data)
+    
+    rowMap = data.row.map((square, squareIndex) => {
+      return (
 
-  //       <td 
-  //         key={square[0]} 
-  //         className="square-test"             
-  //         onClick={() => this.props.squareClick(square)}
-  //       >
-  //         {square[1]}
-  //       </td>
-  //     )
-  //   })
-  // })
-  // return rowMap;  
+        <td 
+          key={square[0]} 
+          className="square-test"             
+          onClick={() => this.props.squareClick(square)}
+        >
+          {square[1]}
+        </td>
+      )
+    })
+  console.log(rowMap)
+  return rowMap;
+
 }
 

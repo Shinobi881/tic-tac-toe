@@ -46,15 +46,21 @@ function makeRows(rowSize) {
   };
 }
 
-function makeBoard(rowCreator, boardSize) {
-  let board = [];
+function makeBoard(rowCreator, boardSize = 3) {
+  let board = {
+    rows: [],
+    winner: false,
+    size: boardSize
+  };
+  board.rows = [];
+  board.winner = false;
   
   for (var i = 0; i < boardSize; i++) {
     let newRow = rowCreator(boardSize);
     
     newRow.index = i;
     newRow.length = boardSize;
-    board.push(newRow);
+    board.rows.push(newRow);
   }
   
   return {
