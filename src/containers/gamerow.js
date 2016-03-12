@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import _ from 'lodash';
 
 import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
 
 // import GameSquare from './gamepiece';
 
+
+
 class GameRow extends Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {key: ''};
+
+    // let newRange = _.times(3, () => [0 + 1, '']);
+    // console.log(newRange);
   }
   
   renderSquares(rowSet, rowsIndex) {
-    if (!this.props.gameRow) {
-      return (        
-        <td><h2>Please choose a gameboard size!</h2></td>        
-      )
-    }
-
     let rowMap = [];
-    this.props.gameRow.forEach(function (squareArr) {    
+    this.props.gameRow.forEach(function (squareArr, i) {  
+      // console.log(i)  
       rowMap = squareArr.row.map((square, squareIndex) => {
         return (
           <td 
@@ -37,8 +38,9 @@ class GameRow extends Component {
   }
 
   render() {
+    // console.log('props', this.state)
     return (
-      <tr className="game-row-test">
+      <tr key="" className="game-row-test">
         {this.renderSquares()}     
       </tr>           
     );

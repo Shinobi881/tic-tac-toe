@@ -1,23 +1,51 @@
+import _ from 'lodash';
+
 export const SQUARE_CLICKED = 'SQUARE_CLICKED';
 export const GET_BOARD_SIZE = 'GET_BOARD_SIZE';
 export const MAKE_ROWS = 'MAKE_ROWS';
 export const MAKE_BOARD = 'MAKE_BOARD';
 export const INITIAL_STATE = 'INITIAL_STATE';
 
-const board_size_input = 3;
+
+//////////////////// BOARD HELPERS ///////////////
+function makeSquare1 (position) {
+  return {
+    position: position,
+    gamePiece: ''
+  };
+}
+
+function makeSquare2 (position) {
+  return [position, ''];  
+}
+
+function rowCreator(num, callback) {
+  let row = [];
+  
+  for (var i = 0; i < num; i++) {
+    row.push(callback(i));
+  }
+  return row;
+}
+
+////////////////////////////////////////////////////
 
 function makeRows(rowSize) {
-  let rowData = {
-    row: [], index: 0,
+
+  let row1 = rowCreator(rowSize, makeSquare1);
+  let row2 = rowCreator(rowSize, makeSquare2);
+
+  // console.log('newRow1', row1)
+  // console.log('newRow2', row2)  
+
+  return {
+    row: rowCreator(rowSize, makeSquare2), 
+    index: 0,
     count: 0, length: 0,
     num_X: 0, num_O: 0
-  };  
-  for (var i = 0; i < rowSize; i++) {
-     rowData.row.push([i, '']);
-  }
-  return rowData;
+  };
 }
-  
+
 function makeBoard(rowCreator, boardSize) {
   let board = [];
   
