@@ -47,6 +47,8 @@ function makeRows(rowSize) {
 }
 
 function makeBoard(rowCreator, boardSize = 3) {
+  boardSize = Number(boardSize);
+
   let board = {
     rows: [],
     winner: false,
@@ -62,6 +64,33 @@ function makeBoard(rowCreator, boardSize = 3) {
     
   ];
 
+  board.diagonals = [
+    {
+      negative: {
+        coords: [],
+        elements: [],
+        length: boardSize,
+        X_count: 0,
+        O_count: 0
+      }
+    },    
+    {
+      positive: {
+        coords: [],
+        elements: [],
+        length: boardSize,
+        X_count: 0,
+        O_count: 0
+      }
+    }
+  ];
+
+  _.times(boardSize, (i) => {
+
+    board.diagonals[0].negative.coords.push([i, i])
+    board.diagonals[1].positive.coords.push([i, (boardSize - i) - 1]);
+  });
+
   _.times(boardSize, (i) => {
       
       let columnObj = {
@@ -70,18 +99,18 @@ function makeBoard(rowCreator, boardSize = 3) {
         elements: [],
         X_count: 0,
         O_count: 0,
-        length: Number(boardSize)
+        length: boardSize
       }
       board.columns.push(columnObj);
     })
   
-  console.log(board.columns);
+  // console.log(board.columns);
 
   for (var i = 0; i < boardSize; i++) {
     let newRow = rowCreator(boardSize);
     
     newRow.index = i;
-    newRow.length = Number(boardSize);
+    newRow.length = boardSize;
     board.rows.push(newRow);
   }
   

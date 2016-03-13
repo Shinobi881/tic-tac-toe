@@ -1,3 +1,4 @@
+import _ from 'lodash';
 export default function(state = null, action) {
   // State argument is not the application state only the state this reducer is responsible for
   console.log(action.type)
@@ -34,7 +35,8 @@ export default function(state = null, action) {
 
       
       let newRows = state.rows.map((val) => val);   
-      let newCols = state.columns.map((val) => val);  
+      let newCols = state.columns.map((val) => val);
+      let newDiags = state.diagonals.map((val) => val);
       let piece = '';
       let count = state.clickCount + 1;
       let square = action.payload;
@@ -42,8 +44,7 @@ export default function(state = null, action) {
       let squareId = Number(square.id);
       let rowId = Number(row.id);
       let currentRow = newRows[rowId];
-      let currentSquare = currentRow.squares[squareId]
-
+      let currentSquare = currentRow.squares[squareId];
       
 
       /////////// Tally Game Pieces /////////////////
@@ -61,10 +62,10 @@ export default function(state = null, action) {
 
       currentSquare.gamePiece = state.currentPiece;
 
-      // console.log('Game square: ', squareId);
-      // console.dir(square);
       // console.log('Game row: ', rowId);
       // console.dir(row);      
+      // console.log('Game square: ', squareId);
+      // console.dir(square);
       // console.log('SQ state', state)
 
       ////////////// Set Current Game Pieces ////////////////
@@ -73,23 +74,38 @@ export default function(state = null, action) {
         newCols[squareId].X_count++;
         currentRow.X_count++;
         piece = 'O';
+        
+        if (rowId === squareId) {
+          newDiags[0].negative.X_count++;
+          newDiags[0].negative.elements.push(square);
+
+          console.log(newDiags[0].negative);
+        }
       } else if (state.clickCount % 2 !== 0) {
         newCols[squareId].O_count++;
         currentRow.O_count++;
         piece = 'X';
+        
+        if (rowId === squareId) {
+          newDiags[0].negative.O_count++;
+          newDiags[0].negative.elements.push(square);
+          console.log(newDiags[0].negative);
+        }
       }
 
       let newPayload = Object.assign({}, state, {
         clickCount: count,
         currentPiece: piece,
         rows: newRows,
-        columns: newCols
+        columns: newCols,
+        diagonals: newDiags
+
 
       })
 
       ////////////// Set Current Game Pieces ////////////////
 
-      
+      // console.log(newDiags[0])
       /////////// Horizontal Win /////////////////////
       if (state.clickCount >= (state.size * 2)) {
         let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length || row.O_count === row.length});
@@ -119,8 +135,26 @@ export default function(state = null, action) {
           return newPayload;
         }
       }
-      console.log('SQ state', state)
+      // console.log('SQ state', state)
       ////////////// Vertical Win ////////////////////
+
+      ////////////// Diagonal Win ////////////////////
+        // Negative diagnonal
+          // If rowId === squareId increment negDiagX_count
+
+        // Positive diagonal
+      if (state.clickCount >= (state.size * 2)) {
+        let negative = newPayload.diagonals[0].negative;
+        if (negative.X_count === negative.length) {
+          negative.elements.forEach((el) => el.classList.add('game-winner'));
+          newPayload.winner = true;
+          alert('Win')
+          console.log(newPayload)
+          return newPayload;
+        }
+      }
+      ////////////// Diagonal Win ////////////////////
+
 
       // console.log(newRows);
       
