@@ -4,71 +4,79 @@ import {squareClick} from '../actions/actions_index';
 import {bindActionCreators} from 'redux';
 import GameRow from './gamerow';
 import  newRow from '../components/gamerow';
+import _ from 'lodash';
 
 import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
 
 class GameBoard extends Component {
   constructor(props){
     super(props);
-    this.state = {};
-    this.gameBoard = this.props.gameBoard;
-    // console.log(this.gameboard)
-
+    this.state = {
+      clickCount: 2,
+      currentPiece: 'X',
+      //winner: this.props.gameBoard.winner
+    };   
   }
-  renderSquares(rowSet, rowsIndex) {
-    return rowSet.map((square, squareIndex) => {
-      let squareKey = rowsIndex.toString() + squareIndex.toString();
+  renderSquares(data) {
+    // console.log(data)
+    return data.map((square, squareIndex) => {
+      // console.log(square)
       return (
-
         <td 
-          key={squareKey} 
-          className="square" 
-          id={squareKey}
-          onClick={() => this.props.squareClick(square)}
+          className="game-square"             
+          key={square.position}
+          id={square.position} 
+          value={square.gamePiece}
         >
-          {rowSet[0]}
+          {square.gamePiece}
         </td>
       )
     })
   }
-  renderRows(props, index) {
-    // console.log(props)
-    // if (props) {
-    //   return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
-    // }
-    // return props.map((rows, rowIndex) => {
+  handleRowClick(event) {
+    // event.stopPropagation()
+    let row = event.target;
+    let state = this.state;
+    this.setState({clickCount: this.state.clickCount++})
+    console.log('State', this.state.clickCount)
+    // this.state
+    let clickCount = 2;
 
-      // console.log(element.key);
-      // console.log('rows', rows);
-      // element.props.key = rowIndex;
-      // return <tr><td>props</td></tr>;
-    // console.log('test', newRow(props))
-    // });
+    if (state.clickCount % 2 !== 0) {
+      this.setState({ currentPiece:'O' });
+    } else if (state.clickCount % 2 === 0) {
+      this.setState({ currentPiece:'X' });
+    }
 
-    return (
-      <tr key={index}>
-        {newRow(props)}
-      </tr>
-    )
+    // console.dir(row.parentNode)
+    // console.log(row)
+    // console.log(this)
+    this.props.squareClick(row, this.props.gameBoard);
   }
-  // renderSquares(rowSet, rowsIndex) {
-  //   let rowMap = [];
-  //   this.props.gameRow.forEach(function (squareArr) {    
-  //     rowMap = squareArr.row.map((square, squareIndex) => {
-  //       return (
-  //         <td 
-  //           key={square[0]} 
-  //           className="square-test"             
-  //           onClick={() => this.props.squareClick(square)}
-  //         >
-  //           {square[1]}
-  //         </td>
-  //       )
-  //     })
-  //   })
-  //   return rowMap;  
-  // }
-
+  renderRows() {
+    let props = this.props;
+    if (!props.gameBoard) {
+      return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
+    }
+    // console.log('props', props)
+    return _.map(props.gameBoard.rows, (val) => {
+        // console.log('val', val)
+      return (
+        <tr key={val.index}
+          id={val.index}
+          className="game-row"
+          X_count={val.num_X}
+          O_count={val.num_O}
+          onClick={this.handleRowClick.bind(this)}
+        >
+          {this.renderSquares(val.squares)}
+        </tr>
+      )
+        
+      })
+    
+  }
+ 
   render() {
     if (!this.props.gameBoard) {
       return <h1>Please choose a gameboard size!</h1>
@@ -76,16 +84,16 @@ class GameBoard extends Component {
     return (
 
     <table className="game-board">
-      <tbody>
-        {this.props.gameBoard.rows.map(this.renderRows)}
+      <tbody>        
+        {this.renderRows()}  
       </tbody>
     </table>
     );
   }
 }
-
+// {this.props.gameBoard.rows.map(this.renderRows)}
 function mapStateToProps (state) {
-  //console.log(state);
+
   return {
     gameBoard: state.gameBoard
   };

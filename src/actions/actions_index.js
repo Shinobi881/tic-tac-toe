@@ -39,8 +39,8 @@ function makeRows(rowSize) {
   // console.log('newRow2', row2)  
 
   return {
-    row: rowCreator(rowSize, makeSquare2), 
-    index: 0,
+    squares: rowCreator(rowSize, makeSquare1), 
+    index: 0, rowClickCount: 0,
     count: 0, length: 0,
     num_X: 0, num_O: 0
   };
@@ -54,6 +54,8 @@ function makeBoard(rowCreator, boardSize = 3) {
   };
   board.rows = [];
   board.winner = false;
+  board.clickCount = 2;
+  board.currentPiece = 'X';
   
   for (var i = 0; i < boardSize; i++) {
     let newRow = rowCreator(boardSize);
@@ -85,7 +87,8 @@ function getBoardSize(size) {
 }
 
 function squareClick(square) {
-  console.log(square)
+
+
   return {
     type: SQUARE_CLICKED,
     payload: square
