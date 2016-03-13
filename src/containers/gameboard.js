@@ -1,18 +1,16 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {squareClick} from '../actions/actions_index';
-import {bindActionCreators} from 'redux';
-import renderSquares from '../components/gamesquare';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 
-import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
+import { squareClick } from '../actions/actions_index';
+import renderSquares from '../components/gamesquare';
 
 class GameBoard extends Component {
   constructor(props){
     super(props);
     this.state = {};   
-  }
-  
+  }  
   handleRowClick(event) {
     let row = event.target;
 
@@ -34,12 +32,9 @@ class GameBoard extends Component {
         >
           {renderSquares(val.squares)}
         </tr>
-      )
-        
-    })
-    
-  }
- 
+      )        
+    })    
+  } 
   render() {
     if (!this.props.gameBoard) {
       return <h1>Please choose a gameboard size!</h1>

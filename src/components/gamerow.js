@@ -1,19 +1,24 @@
 import React from 'react';
+import renderSquares from './gamesquare';
 
-export default (data) => {
-  console.log('data', data)
-
-  return data.row.map((square, squareIndex) => {
+export default (props, clickHandler) => {
+  // let props = this.props;
+  console.log(props)
+  if (!props.gameBoard) {
+    return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
+  }
+  return _.map(props.gameBoard.rows, (val) => {
     return (
-      <td 
-        key={square[0]} 
-        className="square-test"             
-        
+      <tr key={val.index}
+        id={val.index}
+        className="game-row"
+        X_count={val.X_count}
+        O_count={val.O_count}
+        onClick={clickHandler}
       >
-        {square[1]}
-      </td>
-    )
+        {renderSquares(val.squares)}
+      </tr>
+    )      
   })
-
 }
 
