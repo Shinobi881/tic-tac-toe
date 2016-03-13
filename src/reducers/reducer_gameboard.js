@@ -67,34 +67,49 @@ export default function(state = null, action) {
 
       ////////////// Set Current Game Pieces ////////////////
       
-     
+     const checkClickCount = (count, collection) => {
+
+      }
+
+      const gp = piece => piece += '_count';
+
+      const incrementCount = (thing1, thing2, type) => {
+        thing1[type]++;
+        thing2[type]++;
+      }
+
+      const handleNegDiags = (thing1, arr, type) => {
+        thing1[type]++;
+        thing1.elements[arr[1]] = arr[0];
+      }
+
+      const handlePosDiags = (thing1, el, type) => {
+        thing1[type]++;
+        thing1.elements.push(el);
+      }
+
+      // handleDiags(negative, [square, squareId], 'X');
+
 
       if (state.clickCount % 2 === 0) {
-        currentCol.X_count++;
-        currentRow.X_count++;
         piece = 'O';
-        
+        incrementCount(currentCol, currentRow, gp('X'));       
+
         if (rowId === squareId) {
-          negative.X_count++;
-          negative.elements[squareId] = square;
+          handleNegDiags(negative, [square, squareId], gp('X'));
         } 
         if (rowId + squareId === state.size - 1) {
-          positive.X_count++;
-          positive.elements.push(square);
+          handlePosDiags(positive, square, gp('X'));
         }
       } else if (state.clickCount % 2 !== 0) {
-        currentCol.O_count++;
-        currentRow.O_count++;
-        piece = 'X';
+        piece = 'X';        
+        incrementCount(currentCol, currentRow, gp('O'));
         
         if (rowId === squareId) {
-          negative.O_count++;
-          negative.elements.push(square);
-          console.log(newDiags[0].negative);
+          handleNegDiags(negative, [square, squareId], gp('X'));
         } 
         if (rowId + squareId === state.size - 1) {
-          positive.O_count++;
-          positive.elements.push(square);
+          handlePosDiags(positive, square, gp('X'));
         }
       }
 

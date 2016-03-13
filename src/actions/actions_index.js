@@ -11,8 +11,6 @@ const createSquares = (position) => {
   };
 }
 
-////////////////////////////////////////////////////
-
 const makeRows = (rowSize) => {
   return {
     squares: _.times(rowSize, (i) => createSquares(i)), index: 0, 
@@ -29,13 +27,6 @@ const createRows = (rowSize) => {
   })
 };
 
-const resetWin = () => {
-  let rows = document.getElementsByTagName('tr');
-  let squares = document.getElementsByTagName('td');
-  console.log(rows);
-  rows.classList.remove('game-winner');
-  squares.classList.remove('game-winner');
-};
 
 
 const createColumns = (colSize) => {
@@ -64,6 +55,13 @@ const createBoard = (boardSize = null) => {
 };
 
 
+const resetWin = () => {
+  let rows = document.getElementsByTagName('tr');
+  let squares = document.getElementsByTagName('td');
+  console.log(rows);
+  rows.classList.remove('game-winner');
+  squares.classList.remove('game-winner');
+};
 
 
 
