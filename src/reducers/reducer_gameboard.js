@@ -113,9 +113,18 @@ export default function(state = null, action) {
       ////////////// Horizontal Win //////////////////
       
       ////////////// Vertical Win ////////////////////
-      if (state.clickCount === (Number(state.size) * 2)) {
+      // let winningColumn = document.getElementsByClassName('col-' + square.id);
+      // console.log(winningColumn)
+
+      if (state.clickCount >= (state.size * 2)) {
         let checkVertWin = _.find(newCols, (col) => { return col.X_count === col.length || col.O_count === col.length });
         if (checkVertWin) {
+          let winningColumn = document.getElementsByClassName('col-' + square.id);
+          // console.log(winningColumn[0]);
+          // winningColumn.forEach((element) => { element.classList.add('game-winner')});
+          for (let i = 0; i < winningColumn.length; i++) {
+            winningColumn[i].classList.add('game-winner');
+          }
           alert('Win')
         }
       }
