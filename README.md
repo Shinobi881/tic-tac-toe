@@ -30,3 +30,15 @@ Each click on the board should alternate between X and O until someone wins or t
 - [x] Use module loaders like webpack or browserify for dependency management
 - [x] Support any NxN tic­tac­toe board
 - [ ] Write error handling and/or tests
+
+##Installation
+
+*Before running you should have Webpack and Babel installed globally:*
+
+`$ npm i -g webpack babel babel-core` 
+
+*After completing the installation above. From your CLi:*
+
+1. `$ npm i`
+2. `$ npm start`
+3. Then open a web browser to localhost:3000/
