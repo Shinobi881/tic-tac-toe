@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {squareClick} from '../actions/actions_index';
 import {bindActionCreators} from 'redux';
-// import GameRow from './gamerow';
-// import  newRow from '../components/gamerow';
+import renderSquares from '../components/gamesquare';
 import _ from 'lodash';
 
 import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
@@ -11,28 +10,9 @@ import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/action
 class GameBoard extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      clickCount: 2,
-      currentPiece: 'X',
-      //winner: this.props.gameBoard.winner
-    };   
+    this.state = {};   
   }
-  renderSquares(data) {
-    // console.log(data)
-    return data.map((square, squareIndex) => {
-      // console.log(square)
-      return (
-        <td 
-          className={"game-square col-" + square.position}
-          key={square.position}
-          id={square.position} 
-          value={square.gamePiece}
-        >
-          {square.gamePiece}
-        </td>
-      )
-    })
-  }
+  
   handleRowClick(event) {
     let row = event.target;
 
@@ -43,9 +23,7 @@ class GameBoard extends Component {
     if (!props.gameBoard) {
       return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
     }
-    // console.log('props', props)
     return _.map(props.gameBoard.rows, (val) => {
-        // console.log('val', val)
       return (
         <tr key={val.index}
           id={val.index}
@@ -54,11 +32,11 @@ class GameBoard extends Component {
           O_count={val.O_count}
           onClick={this.handleRowClick.bind(this)}
         >
-          {this.renderSquares(val.squares)}
+          {renderSquares(val.squares)}
         </tr>
       )
         
-      })
+    })
     
   }
  
@@ -76,7 +54,6 @@ class GameBoard extends Component {
     );
   }
 }
-// {this.props.gameBoard.rows.map(this.renderRows)}
 function mapStateToProps (state) {
 
   return {
