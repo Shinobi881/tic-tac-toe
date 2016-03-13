@@ -6,13 +6,6 @@ export default function(state = null, action) {
     case 'MAKE_BOARD':
       return action.payload
     case 'SQUARE_CLICKED':
-    
-
-
-
-
-
-
 
 
       //////////////// Check Horizontal win  //////////////////////
@@ -61,10 +54,11 @@ export default function(state = null, action) {
       /////////// Tally Game Pieces /////////////////
 
       currentSquare.gamePiece = state.currentPiece;
-
-      // console.log('Game row: ', rowId);
+      let middleSquare = Math.floor(state.size / 2);
+      console.log('middleSquare: ', middleSquare)
+      console.log('Game row: ', rowId);
       // console.dir(row);      
-      // console.log('Game square: ', squareId);
+      console.log('Game square: ', squareId);
       // console.dir(square);
       // console.log('SQ state', state)
 
@@ -77,9 +71,13 @@ export default function(state = null, action) {
         
         if (rowId === squareId) {
           newDiags[0].negative.X_count++;
-          newDiags[0].negative.elements.push(square);
+          newDiags[0].negative.elements[squareId] = square;
 
           console.log(newDiags[0].negative);
+        } 
+        if (rowId + squareId === state.size - 1) {
+          newDiags[1].positive.X_count++;
+          newDiags[1].positive.elements.push(square);
         }
       } else if (state.clickCount % 2 !== 0) {
         newCols[squareId].O_count++;
@@ -90,6 +88,10 @@ export default function(state = null, action) {
           newDiags[0].negative.O_count++;
           newDiags[0].negative.elements.push(square);
           console.log(newDiags[0].negative);
+        } 
+        if (rowId + squareId === state.size - 1) {
+          newDiags[1].positive.O_count++;
+          newDiags[1].positive.elements.push(square);
         }
       }
 
@@ -99,9 +101,7 @@ export default function(state = null, action) {
         rows: newRows,
         columns: newCols,
         diagonals: newDiags
-
-
-      })
+      });
 
       ////////////// Set Current Game Pieces ////////////////
 
@@ -135,18 +135,28 @@ export default function(state = null, action) {
           return newPayload;
         }
       }
-      // console.log('SQ state', state)
+      console.log('SQ state', state)
       ////////////// Vertical Win ////////////////////
 
       ////////////// Diagonal Win ////////////////////
         // Negative diagnonal
           // If rowId === squareId increment negDiagX_count
-
+      
         // Positive diagonal
       if (state.clickCount >= (state.size * 2)) {
         let negative = newPayload.diagonals[0].negative;
-        if (negative.X_count === negative.length || negative.O_count === negative.length) {
+        let positive = newPayload.diagonals[1].positive;
+        let middleSquare = Math.floor(state.size / 2);
+        // if (negative.elements.length === state.size) {
+        if (negative.X_count === negative.length || negative.O_count === negative.length ) {
           negative.elements.forEach((el) => el.classList.add('game-winner'));
+          newPayload.winner = true;
+          alert('Win')
+          console.log(newPayload)
+          return newPayload;
+        }
+        if ((positive.X_count === positive.length || positive.O_count === positive.length) ) {
+          positive.elements.forEach((el) => el.classList.add('game-winner'));
           newPayload.winner = true;
           alert('Win')
           console.log(newPayload)
