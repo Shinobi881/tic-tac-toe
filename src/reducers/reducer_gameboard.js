@@ -5,14 +5,15 @@ export default function(state = null, action) {
     case 'MAKE_BOARD':
       return action.payload
     case 'SQUARE_CLICKED':
-      if (action.payload.value) {
         console.log('Click somewhere else', state)
+    
+      if (action.payload.value) {
         return state
       }
 
       let newRows = state.rows.map((val) => val);
       
-      let piece = 'X'
+      let piece = ''
       let count = state.clickCount + 1;
       let square = action.payload;
       let row = square.parentNode;
@@ -25,15 +26,15 @@ export default function(state = null, action) {
 
       newRows[rowId].squares[squareId].gamePiece = state.currentPiece;
 
-      console.log('Game square: ', squareId);
-      console.dir(square);
-      console.log('Game row: ', rowId);
-      console.dir(row);
+      // console.log('Game square: ', squareId);
+      // console.dir(square);
+      // console.log('Game row: ', rowId);
+      // console.dir(row);
       
       // console.log('SQ state', state)
-      if (state.clickCount % 2 !== 0) {
+      if (state.clickCount % 2 === 0) {
         piece = 'O';
-      } else if (state.clickCount % 2 === 0) {
+      } else if (state.clickCount % 2 !== 0) {
         piece = 'X';
       }
       console.log('SQ action', action)
