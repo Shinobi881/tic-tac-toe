@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { makeRows, makeBoard, getBoardSize, createBoard } from '../actions/actions_index';
+import { boardCreated, getBoardSize, createBoard } from '../actions/actions_index';
 
 // This class allows user to choose a board size, create, and start a new game
 class BoardSize extends Component {
@@ -10,18 +10,20 @@ class BoardSize extends Component {
     super(props);
     this.state = {size: ''};
   }
+
   // Binds changes to the form
   onInputChange(event) {
     this.setState({size: event.target.value });
   }
+
   // Events to execute on form submission
   onFormSubmit(event) {
     event.preventDefault();
-    // this.props.makeBoard(makeRows, this.state.size);
-    this.props.makeBoard(createBoard(this.state.size));
     this.props.getBoardSize(this.state.size);
+    this.props.boardCreated(createBoard(this.state.size));
     this.setState({size: ''});
   }
+
   // Render the form and submit button
   render() {
     return (
@@ -40,6 +42,7 @@ class BoardSize extends Component {
   }  
 }
 
+// Map properties and actions to Redux reducer
 function mapStateToProps(state) {
   return {
     size: state.boardSize
@@ -47,7 +50,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ makeBoard, getBoardSize }, dispatch);
+  return bindActionCreators({ boardCreated, getBoardSize }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(BoardSize);

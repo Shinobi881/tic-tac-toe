@@ -3,7 +3,7 @@ export default function(state = null, action) {
   // State argument is not the application state only the state this reducer is responsible for
   console.log(action.type)
   switch(action.type) {
-    case 'MAKE_BOARD':
+    case 'BOARD_CREATED':
       return action.payload
     case 'SQUARE_CLICKED':
 

@@ -1,10 +1,6 @@
 import _ from 'lodash';
 
-export const SQUARE_CLICKED = 'SQUARE_CLICKED';
-export const GET_BOARD_SIZE = 'GET_BOARD_SIZE';
-export const MAKE_ROWS = 'MAKE_ROWS';
-export const MAKE_BOARD = 'MAKE_BOARD';
-export const INITIAL_STATE = 'INITIAL_STATE';
+import ACTIONS from './action_types';
 
 
 //////////////////// BOARD HELPERS ///////////////
@@ -32,16 +28,6 @@ const createRows = (rowSize) => {
     };
   })
 };
-
-// board.rows = _.times(boardSize, (i) => {
-//     let newRow = rowCreator(boardSize);    
-    
-//     newRow.index = i;
-//     newRow.length = boardSize;
-//     board.rows.push(newRow);
-    
-//     return newRow;
-//   });
 
 const resetWin = () => {
   let rows = document.getElementsByTagName('tr');
@@ -79,56 +65,7 @@ const createBoard = (boardSize = null) => {
 
 
 
-// function makeBoard(rowCreator, boardSize = null) {
-function makeBoard(board = null) {
-  // console.log(board)
-  // boardSize = Number(boardSize);
 
-  // let board = {
-  //   rows: [], currentPiece: 'X', size: boardSize, 
-  //   tie: false, clickCount: 2, winner: false
-  // };  
-
-  // board.diagonals = [
-  //   {
-  //     negative: {
-  //       elements: [], X_count: 0,
-  //       O_count: 0, length: boardSize        
-  //     }
-  //   },    
-  //   {
-  //     positive: {
-  //       elements: [], X_count: 0,
-  //       O_count: 0, length: boardSize
-  //     }
-  //   }
-  // ];
-
-  // board.columns = _.times(boardSize, (i) => {
-  //   return {
-  //     position: i, piece: '', elements: [], 
-  //     X_count: 0, O_count: 0, length: boardSize
-  //   };    
-  // });
-
-  // board.rows = createRows(boardSize);
-  // console.log(board.rows)
-
-  // board.rows = _.times(boardSize, (i) => {
-  //   let newRow = rowCreator(boardSize);    
-    
-  //   newRow.index = i;
-  //   newRow.length = boardSize;
-  //   board.rows.push(newRow);
-    
-  //   return newRow;
-  // });
-  
-  return {
-    type: MAKE_BOARD,
-    payload: board
-  }
-}
 
 function initialState() {  
   let test = makeBoard(makeRows, 3);
@@ -140,16 +77,23 @@ function initialState() {
 }
 function getBoardSize(size) {
   return {
-    type: GET_BOARD_SIZE,
+    type: ACTIONS.GET_BOARD_SIZE,
     payload: size
+  }
+}
+
+function boardCreated(board = null) {  
+  return {
+    type: ACTIONS.BOARD_CREATED,
+    payload: board
   }
 }
 
 function squareClick(square) {
   return {
-    type: SQUARE_CLICKED,
+    type: ACTIONS.SQUARE_CLICKED,
     payload: square
   }
 }
 
-export { makeRows, makeBoard, getBoardSize, squareClick, initialState, createBoard }
+export { makeRows, boardCreated, getBoardSize, squareClick, initialState, createBoard }
