@@ -23,7 +23,7 @@ class GameBoard extends Component {
       // console.log(square)
       return (
         <td 
-          className="game-square"             
+          className={"game-square col-" + square.position}
           key={square.position}
           id={square.position} 
           value={square.gamePiece}
@@ -38,7 +38,7 @@ class GameBoard extends Component {
     let row = event.target;
     let state = this.state;
     this.setState({clickCount: this.state.clickCount++})
-    console.log('State', this.state.clickCount)
+    // console.log('State', this.state.clickCount)
     // this.state
     let clickCount = 2;
 

@@ -56,7 +56,27 @@ function makeBoard(rowCreator, boardSize = 3) {
   board.winner = false;
   board.clickCount = 2;
   board.currentPiece = 'X';
+  let columnIndicies= 
   
+  board.columns = [
+    
+  ];
+
+  _.times(boardSize, (i) => {
+      
+      let columnObj = {
+        position: i,
+        piece: '',
+        elements: [],
+        X_count: 0,
+        O_count: 0,
+        length: Number(boardSize)
+      }
+      board.columns.push(columnObj);
+    })
+  
+  console.log(board.columns);
+
   for (var i = 0; i < boardSize; i++) {
     let newRow = rowCreator(boardSize);
     

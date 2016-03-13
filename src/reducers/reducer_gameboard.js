@@ -32,7 +32,8 @@ export default function(state = null, action) {
       ////////////// Check if already clicked ////////////////
 
       
-      let newRows = state.rows.map((val) => val);      
+      let newRows = state.rows.map((val) => val);   
+      let newCols = state.columns.map((val) => val);  
       let piece = '';
       let count = state.clickCount + 1;
       let square = action.payload;
@@ -68,9 +69,11 @@ export default function(state = null, action) {
       ////////////// Set Current Game Pieces ////////////////
       
       if (state.clickCount % 2 === 0) {
+        newCols[squareId].X_count++;
         currentRow.X_count++;
         piece = 'O';
       } else if (state.clickCount % 2 !== 0) {
+        newCols[squareId].O_count++;
         currentRow.O_count++;
         piece = 'X';
       }
@@ -78,10 +81,15 @@ export default function(state = null, action) {
       let newPayload = Object.assign({}, state, {
         clickCount: count,
         currentPiece: piece,
-        rows: newRows
+        rows: newRows,
+        columns: newCols
 
       })
 
+      ////////////// Set Current Game Pieces ////////////////
+
+      
+      /////////// Horizontal Win /////////////////////
       if (state.clickCount === (Number(state.size) * 2)) {
         let test = _.find(newRows, (row) => { return row.X_count === Number(row.length) || row.O_count === row.length });
         if (test) {
@@ -92,9 +100,20 @@ export default function(state = null, action) {
           return newPayload;
         }
       }
+      ////////////// Horizontal Win //////////////////
+      
+      ////////////// Vertical Win ////////////////////
+      if (state.clickCount === (Number(state.size) * 2)) {
+        let checkVertWin = _.find(newCols, (col) => { return col.X_count === col.length || col.O_count === col.length });
+        if (checkVertWin) {
+          alert('Win')
+        }
+      }
+      console.log('SQ state', state)
+      ////////////// Vertical Win ////////////////////
+
       // console.log(newRows);
       
-      ////////////// Set Current Game Pieces ////////////////
       // console.log('SQ action', action)
 
       return newPayload;
