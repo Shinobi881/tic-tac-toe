@@ -14,15 +14,21 @@ export default function(state = null, action) {
       //////////////// Check horizontal win //////////////////////
       
       ////////////// Check if already clicked ////////////////
-
+      if (state.winner) {
+        alert('Please start a new game')
+        return state;
+      }  
+      if (state.tie) {
+        alert('please start a new game');
+        return state;
+      }
       if (action.payload.value) {
         console.log('Click somewhere else', state.rows)
 
         return state
-      } else if (state.winner) {
-        alert('Please start a new game')
-        return state;
-      }
+      } 
+
+      
 
       ////////////// Check if already clicked ////////////////
 
@@ -107,8 +113,23 @@ export default function(state = null, action) {
 
       // console.log(newDiags[0])
       /////////// Horizontal Win /////////////////////
+      if (state.clickCount === (state.size * state.size) + 1) {
+          newPayload.tie = true;
+          console.log(newPayload.tie)
+          alert('cat\'s game' );
+          
+          return newPayload;
+      }
       if (state.clickCount >= (state.size * 2)) {
         let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length || row.O_count === row.length});
+        
+        if (state.clickCount === (state.size * state.size) + 1) {
+          newPayload.tie = true;
+          console.log(newPayload.tie)
+          alert('cat\'s game' );
+          
+          return newPayload;
+        }
         
         if (checkHorXWin) {
           newPayload.winner = true;

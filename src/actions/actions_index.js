@@ -52,7 +52,8 @@ function makeBoard(rowCreator, boardSize = 3) {
   let board = {
     rows: [],
     winner: false,
-    size: boardSize
+    size: boardSize,
+    tie: false
   };
   board.rows = [];
   board.winner = false;
