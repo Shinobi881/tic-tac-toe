@@ -43,61 +43,58 @@ export default function(state = null, action) {
       let squareId = Number(square.id);
       let rowId = Number(row.id);
       let currentRow = newRows[rowId];
+      
       let currentSquare = currentRow.squares[squareId];
+      let currentCol = newCols[squareId];
+
+
+
+      let positive = newDiags[1].positive;
+      let negative =newDiags[0].negative;
       
 
-      /////////// Tally Game Pieces /////////////////
-      //   console.log(square.valueOf())
-      //   console.dir(square)
-      // if (square.value === 'X') {
-      //   console.log(newRows[rowId].X_count)
-      //   newRows[rowId].X_count++;
-      // } else if (square.value === 'O') {
-      //   newRows[rowId].O_count++;
-      // }
-
-      // console.log('Current row: ', newRows[rowId])
-      /////////// Tally Game Pieces /////////////////
-
       currentSquare.gamePiece = state.currentPiece;
+
+
+
       let middleSquare = Math.floor(state.size / 2);
-      console.log('middleSquare: ', middleSquare)
-      console.log('Game row: ', rowId);
+      // console.log('middleSquare: ', middleSquare)
+      // console.log('Game row: ', rowId);
       // console.dir(row);      
-      console.log('Game square: ', squareId);
+      // console.log('Game square: ', squareId);
       // console.dir(square);
       // console.log('SQ state', state)
 
       ////////////// Set Current Game Pieces ////////////////
       
+     
+
       if (state.clickCount % 2 === 0) {
-        newCols[squareId].X_count++;
+        currentCol.X_count++;
         currentRow.X_count++;
         piece = 'O';
         
         if (rowId === squareId) {
-          newDiags[0].negative.X_count++;
-          newDiags[0].negative.elements[squareId] = square;
-
-          console.log(newDiags[0].negative);
+          negative.X_count++;
+          negative.elements[squareId] = square;
         } 
         if (rowId + squareId === state.size - 1) {
-          newDiags[1].positive.X_count++;
-          newDiags[1].positive.elements.push(square);
+          positive.X_count++;
+          positive.elements.push(square);
         }
       } else if (state.clickCount % 2 !== 0) {
-        newCols[squareId].O_count++;
+        currentCol.O_count++;
         currentRow.O_count++;
         piece = 'X';
         
         if (rowId === squareId) {
-          newDiags[0].negative.O_count++;
-          newDiags[0].negative.elements.push(square);
+          negative.O_count++;
+          negative.elements.push(square);
           console.log(newDiags[0].negative);
         } 
         if (rowId + squareId === state.size - 1) {
-          newDiags[1].positive.O_count++;
-          newDiags[1].positive.elements.push(square);
+          positive.O_count++;
+          positive.elements.push(square);
         }
       }
 
@@ -111,15 +108,17 @@ export default function(state = null, action) {
 
       ////////////// Set Current Game Pieces ////////////////
 
+      const catsGame = (state = null) => {
+        state.tie = true;
+        alert('cat\'s game' );        
+        return state;
+      }
       // console.log(newDiags[0])
       /////////// Horizontal Win /////////////////////
       if (state.clickCount === (state.size * state.size) + 1) {
-          newPayload.tie = true;
-          console.log(newPayload.tie)
-          alert('cat\'s game' );
-          
-          return newPayload;
+        return catsGame(newPayload);
       }
+
       if (state.clickCount >= (state.size * 2)) {
         let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length || row.O_count === row.length});
         
@@ -133,8 +132,8 @@ export default function(state = null, action) {
         
         if (checkHorXWin) {
           newPayload.winner = true;
-          alert('X wins!');
           row.classList.add('game-winner');
+          alert('X wins!');
           console.log(row)
           return newPayload;
         }
