@@ -90,11 +90,21 @@ export default function(state = null, action) {
 
       
       /////////// Horizontal Win /////////////////////
-      if (state.clickCount === (Number(state.size) * 2)) {
-        let test = _.find(newRows, (row) => { return row.X_count === Number(row.length) || row.O_count === row.length });
-        if (test) {
+      if (state.clickCount >= (state.size * 2)) {
+        let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length });
+        let checkHorOWin= _.find(newRows, (row) => { return row.O_count === row.length });
+        
+        if (checkHorXWin) {
           newRows.winner = true;
-          alert(test + ' wins!');
+          alert('X wins!');
+          row.classList.add('game-winner');
+          console.log(row)
+          return newPayload;
+        }
+
+        if (checkHorOWin) {
+          newRows.winner = true;
+          alert('O wins!');
           row.classList.add('game-winner');
           console.log(row)
           return newPayload;

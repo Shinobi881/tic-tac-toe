@@ -81,7 +81,7 @@ function makeBoard(rowCreator, boardSize = 3) {
     let newRow = rowCreator(boardSize);
     
     newRow.index = i;
-    newRow.length = boardSize;
+    newRow.length = Number(boardSize);
     board.rows.push(newRow);
   }
   
