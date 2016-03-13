@@ -14,9 +14,10 @@ export default function(state = null, action) {
 
 
 
-      //////////////// Check win //////////////////////
-              // Check win function here
-      //////////////// Check win //////////////////////
+      //////////////// Check Horizontal win  //////////////////////
+          // If gameClickCount === gameLength * 2
+            // _.find(state.rows, function(val) {});
+      //////////////// Check horizontal win //////////////////////
       
       ////////////// Check if already clicked ////////////////
 
@@ -24,6 +25,8 @@ export default function(state = null, action) {
         console.log('Click somewhere else', state.rows)
 
         return state
+      } else if (state.winner) {
+        return alert('Please start a new game');
       }
 
       ////////////// Check if already clicked ////////////////
@@ -40,7 +43,6 @@ export default function(state = null, action) {
       let currentSquare = currentRow.squares[squareId]
 
       
-
 
       /////////// Tally Game Pieces /////////////////
       //   console.log(square.valueOf())
@@ -72,17 +74,30 @@ export default function(state = null, action) {
         currentRow.O_count++;
         piece = 'X';
       }
-      console.log(newRows);
-      
-      ////////////// Set Current Game Pieces ////////////////
-      // console.log('SQ action', action)
 
-      return Object.assign({}, state, {
+      let newPayload = Object.assign({}, state, {
         clickCount: count,
         currentPiece: piece,
         rows: newRows
 
       })
+
+      if (state.clickCount === (Number(state.size) * 2)) {
+        let test = _.find(newRows, (row) => { return row.X_count === Number(row.length) || row.O_count === row.length });
+        if (test) {
+          newRows.winner = true;
+          alert(test + ' wins!');
+          row.classList.add('game-winner');
+          console.log(row)
+          return newPayload;
+        }
+      }
+      // console.log(newRows);
+      
+      ////////////// Set Current Game Pieces ////////////////
+      // console.log('SQ action', action)
+
+      return newPayload;
   }
   return state;
 }
