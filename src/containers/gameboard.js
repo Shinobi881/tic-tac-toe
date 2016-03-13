@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {squareClick} from '../actions/actions_index';
 import {bindActionCreators} from 'redux';
-import GameRow from './gamerow';
-import  newRow from '../components/gamerow';
+// import GameRow from './gamerow';
+// import  newRow from '../components/gamerow';
 import _ from 'lodash';
 
 import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
@@ -34,23 +34,8 @@ class GameBoard extends Component {
     })
   }
   handleRowClick(event) {
-    // event.stopPropagation()
     let row = event.target;
-    let state = this.state;
-    this.setState({clickCount: this.state.clickCount++})
-    // console.log('State', this.state.clickCount)
-    // this.state
-    let clickCount = 2;
 
-    if (state.clickCount % 2 !== 0) {
-      this.setState({ currentPiece:'O' });
-    } else if (state.clickCount % 2 === 0) {
-      this.setState({ currentPiece:'X' });
-    }
-
-    // console.dir(row.parentNode)
-    // console.log(row)
-    // console.log(this)
     this.props.squareClick(row, this.props.gameBoard);
   }
   renderRows() {

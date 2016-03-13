@@ -46,7 +46,16 @@ function makeRows(rowSize) {
   };
 }
 
-function makeBoard(rowCreator, boardSize = 3) {
+const resetWin = () => {
+  let rows = document.getElementsByTagName('tr');
+  let squares = document.getElementsByTagName('td');
+  console.log(rows)
+  rows.classList.remove('game-winner')
+  squares.classList.remove('game-winner')
+}
+
+
+function makeBoard(rowCreator, boardSize = null) {
   boardSize = Number(boardSize);
 
   let board = {
@@ -137,8 +146,6 @@ function getBoardSize(size) {
 }
 
 function squareClick(square) {
-
-
   return {
     type: SQUARE_CLICKED,
     payload: square
