@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { makeRows, makeBoard, getBoardSize } from '../actions/actions_index';
+import { makeRows, makeBoard, getBoardSize, createBoard } from '../actions/actions_index';
 
 // This class allows user to choose a board size, create, and start a new game
 class BoardSize extends Component {
@@ -17,7 +17,8 @@ class BoardSize extends Component {
   // Events to execute on form submission
   onFormSubmit(event) {
     event.preventDefault();
-    this.props.makeBoard(makeRows, this.state.size);
+    // this.props.makeBoard(makeRows, this.state.size);
+    this.props.makeBoard(createBoard(this.state.size));
     this.props.getBoardSize(this.state.size);
     this.setState({size: ''});
   }

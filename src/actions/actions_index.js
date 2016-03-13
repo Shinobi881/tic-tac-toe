@@ -8,26 +8,40 @@ export const INITIAL_STATE = 'INITIAL_STATE';
 
 
 //////////////////// BOARD HELPERS ///////////////
-const makeSquare = (position) => {
+const createSquares = (position) => {
   return {
     position: position,
     gamePiece: ''
   };
 }
 
-const rowCreator = (num, callback) => {
-  return _.times(num, (i) => callback(i));
-}
 ////////////////////////////////////////////////////
 
 const makeRows = (rowSize) => {
   return {
-    squares: rowCreator(rowSize, makeSquare), 
-    index: 0, rowClickCount: 0,
-    count: 0, length: 0,
-    X_count: 0, O_count: 0
+    squares: _.times(rowSize, (i) => createSquares(i)), index: 0, 
+    rowClickCount: 0, count: 0, length: 0, X_count: 0, O_count: 0
   };
 };
+
+const createRows = (rowSize) => {
+  return _.times(rowSize, (i) => {
+    return {
+      squares: _.times(rowSize, (j) => createSquares(j)), index: i, 
+      rowClickCount: 0, count: 0, length: rowSize, X_count: 0, O_count: 0
+    };
+  })
+};
+
+// board.rows = _.times(boardSize, (i) => {
+//     let newRow = rowCreator(boardSize);    
+    
+//     newRow.index = i;
+//     newRow.length = boardSize;
+//     board.rows.push(newRow);
+    
+//     return newRow;
+//   });
 
 const resetWin = () => {
   let rows = document.getElementsByTagName('tr');
@@ -37,63 +51,78 @@ const resetWin = () => {
   squares.classList.remove('game-winner');
 };
 
-const boardCreator = () => {
 
+const createColumns = (colSize) => {
+  return _.times(colSize, (i) => {
+    return {
+      position: i, piece: '', elements: [], 
+      X_count: 0, O_count: 0, length: colSize
+    }; 
+  });
+}
+
+const createDiagonals = (diagSize) => {
+  return [
+    { negative: { elements: [], X_count: 0, O_count: 0, length: diagSize } },    
+    { positive: { elements: [], X_count: 0, O_count: 0, length: diagSize } }
+  ];
+}
+
+const createBoard = (boardSize = null) => {
+  boardSize = Number(boardSize);
+  return {
+    currentPiece: 'X', size: boardSize, tie: false, clickCount: 2, winner: false,
+    columns: createColumns(boardSize), diagonals: createDiagonals(boardSize),
+    rows: createRows(boardSize)
+  };  
 };
 
 
-function makeBoard(rowCreator, boardSize = null) {
-  boardSize = Number(boardSize);
 
-  let board = {
-    rows: [], currentPiece: 'X',
-    size: boardSize, tie: false,
-    clickCount: 2, winner: false,
-  };  
+// function makeBoard(rowCreator, boardSize = null) {
+function makeBoard(board = null) {
+  // console.log(board)
+  // boardSize = Number(boardSize);
 
-  board.diagonals = [
-    {
-      negative: {
-        elements: [], X_count: 0,
-        O_count: 0, length: boardSize        
-      }
-    },    
-    {
-      positive: {
-        elements: [], X_count: 0,
-        O_count: 0, length: boardSize
-      }
-    }
-  ];
+  // let board = {
+  //   rows: [], currentPiece: 'X', size: boardSize, 
+  //   tie: false, clickCount: 2, winner: false
+  // };  
 
-  board.columns = _.times(boardSize, (i) => {
-    return {
-      position: i, piece: '',
-      elements: [], X_count: 0,
-      O_count: 0, length: boardSize
-    };    
-  });
-      
-  
-  // console.log(board.columns);
+  // board.diagonals = [
+  //   {
+  //     negative: {
+  //       elements: [], X_count: 0,
+  //       O_count: 0, length: boardSize        
+  //     }
+  //   },    
+  //   {
+  //     positive: {
+  //       elements: [], X_count: 0,
+  //       O_count: 0, length: boardSize
+  //     }
+  //   }
+  // ];
 
-  for (var i = 0; i < boardSize; i++) {
-    let newRow = rowCreator(boardSize);
+  // board.columns = _.times(boardSize, (i) => {
+  //   return {
+  //     position: i, piece: '', elements: [], 
+  //     X_count: 0, O_count: 0, length: boardSize
+  //   };    
+  // });
+
+  // board.rows = createRows(boardSize);
+  // console.log(board.rows)
+
+  // board.rows = _.times(boardSize, (i) => {
+  //   let newRow = rowCreator(boardSize);    
     
-    newRow.index = i;
-    newRow.length = boardSize;
-    board.rows.push(newRow);
-  }
-
-  board.rows = _.times(boardSize, (i) => {
-    let newRow = rowCreator(boardSize);    
+  //   newRow.index = i;
+  //   newRow.length = boardSize;
+  //   board.rows.push(newRow);
     
-    newRow.index = i;
-    newRow.length = boardSize;
-    board.rows.push(newRow);
-    
-    return newRow;
-  });
+  //   return newRow;
+  // });
   
   return {
     type: MAKE_BOARD,
@@ -123,4 +152,4 @@ function squareClick(square) {
   }
 }
 
-export {makeRows, makeBoard, getBoardSize, squareClick, initialState}
+export { makeRows, makeBoard, getBoardSize, squareClick, initialState, createBoard }
