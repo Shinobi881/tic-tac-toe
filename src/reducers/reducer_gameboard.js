@@ -5,9 +5,15 @@ export default function(state = null, action) {
     case 'MAKE_BOARD':
       return action.payload
     case 'SQUARE_CLICKED':
+      if (action.payload.value) {
+        console.log('Click somewhere else', state)
+        return state
+      }
+
+      let newRows = state.rows.map((val) => val);
+      
       let piece = 'X'
       let count = state.clickCount + 1;
-      let newRows = state.rows.map((val) => val);
       let square = action.payload;
       let row = square.parentNode;
       let squareId = Number(square.id);
