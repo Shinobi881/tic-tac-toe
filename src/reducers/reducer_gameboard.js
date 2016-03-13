@@ -26,7 +26,8 @@ export default function(state = null, action) {
 
         return state
       } else if (state.winner) {
-        return alert('Please start a new game');
+        alert('Please start a new game')
+        return state;
       }
 
       ////////////// Check if already clicked ////////////////
@@ -91,24 +92,24 @@ export default function(state = null, action) {
       
       /////////// Horizontal Win /////////////////////
       if (state.clickCount >= (state.size * 2)) {
-        let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length });
-        let checkHorOWin= _.find(newRows, (row) => { return row.O_count === row.length });
+        let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length || row.O_count === row.length});
+        // let checkHorOWin= _.find(newRows, (row) => { return row.O_count === row.length });
         
         if (checkHorXWin) {
-          newRows.winner = true;
+          newPayload.winner = true;
           alert('X wins!');
           row.classList.add('game-winner');
           console.log(row)
           return newPayload;
         }
 
-        if (checkHorOWin) {
-          newRows.winner = true;
-          alert('O wins!');
-          row.classList.add('game-winner');
-          console.log(row)
-          return newPayload;
-        }
+        // if (checkHorOWin) {
+        //   newPayload.winner = true;
+        //   alert('O wins!');
+        //   row.classList.add('game-winner');
+        //   console.log(row)
+        //   return newPayload;
+        // }
       }
       ////////////// Horizontal Win //////////////////
       
@@ -125,7 +126,10 @@ export default function(state = null, action) {
           for (let i = 0; i < winningColumn.length; i++) {
             winningColumn[i].classList.add('game-winner');
           }
+          newPayload.winner = true;
           alert('Win')
+          console.log(newPayload)
+          return newPayload;
         }
       }
       console.log('SQ state', state)
