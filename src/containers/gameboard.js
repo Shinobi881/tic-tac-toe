@@ -65,8 +65,8 @@ class GameBoard extends Component {
         <tr key={val.index}
           id={val.index}
           className="game-row"
-          X_count={val.num_X}
-          O_count={val.num_O}
+          X_count={val.X_count}
+          O_count={val.O_count}
           onClick={this.handleRowClick.bind(this)}
         >
           {this.renderSquares(val.squares)}

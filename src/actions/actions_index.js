@@ -42,7 +42,7 @@ function makeRows(rowSize) {
     squares: rowCreator(rowSize, makeSquare1), 
     index: 0, rowClickCount: 0,
     count: 0, length: 0,
-    num_X: 0, num_O: 0
+    X_count: 0, O_count: 0
   };
 }
 
