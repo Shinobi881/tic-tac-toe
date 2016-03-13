@@ -145,7 +145,7 @@ export default function(state = null, action) {
         // Positive diagonal
       if (state.clickCount >= (state.size * 2)) {
         let negative = newPayload.diagonals[0].negative;
-        if (negative.X_count === negative.length) {
+        if (negative.X_count === negative.length || negative.O_count === negative.length) {
           negative.elements.forEach((el) => el.classList.add('game-winner'));
           newPayload.winner = true;
           alert('Win')
