@@ -179,7 +179,7 @@ export default function(state = null, action) {
 
       // Horizontal win function
       const checkHorzWin = (state, newLoad, els) => {
-        console.log(state)        
+        // console.log(state)        
         let checkWin = _.find(state.newRows, (row) => { 
           let XHWin = row.X_count === row.length;
           let OHWin = row.O_count === row.length;
@@ -194,29 +194,39 @@ export default function(state = null, action) {
         }
       }
 
+      // Vertical win function
+      const checkVertWin = (state, newLoad, els) => {
+        // console.log(state)        
+        let checkWin = _.find(state.newCols, (col) => { 
+          let XVWin = col.X_count === col.length;
+          let OVWin = col.O_count === col.length;
+          return XVWin || OVWin; 
+        });
+        
+        if (checkWin) {
+          let winningColumn = document
+              .getElementsByClassName('col-' + els.square.id);
+          
+          for (let i = 0; i < winningColumn.length; i++) {
+            winningColumn[i].classList.add('game-winner');
+          }
+
+          newLoad.winner = true;
+          alert('Win')
+          console.log('Vert newLoad',  newLoad)
+          return newLoad;
+        }
+      }
+
       // Check for a horizontal win 
       if (state.clickCount >= (state.size * 2)) {
         if (state.clickCount === (state.size * state.size) + 1) {
           return catsGame(newPayload);
         }        
         checkHorzWin(stateMod, newPayload, newEls);
+        checkVertWin(stateMod, newPayload, newEls);
       }
       
-      
-      // Check for a vertical win scenario
-      if (state.clickCount >= (state.size * 2)) {
-        let checkVertWin = _.find(newCols, (col) => { return col.X_count === col.length || col.O_count === col.length });
-        if (checkVertWin) {
-          let winningColumn = document.getElementsByClassName('col-' + square.id);
-          for (let i = 0; i < winningColumn.length; i++) {
-            winningColumn[i].classList.add('game-winner');
-          }
-          newPayload.winner = true;
-          alert('Win')
-          console.log(newPayload)
-          return newPayload;
-        }
-      }
       // console.log('SQ state', state)
 
       // Check for a diagonal win scenario
