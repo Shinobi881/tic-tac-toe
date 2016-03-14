@@ -54,16 +54,18 @@ const createBoard = (boardSize = null) => {
   };  
 };
 
-
 const resetWin = () => {
   let rows = document.getElementsByTagName('tr');
   let squares = document.getElementsByTagName('td');
-  console.log(rows);
-  rows.classList.remove('game-winner');
-  squares.classList.remove('game-winner');
+  
+  _.forEach(rows, (row) => {
+    row.classList.remove('game-winner');    
+  })
+
+  _.forEach(squares, (square) => {
+    square.classList.remove('game-winner');    
+  })
 };
-
-
 
 function initialState() {  
   let test = makeBoard(makeRows, 3);
@@ -94,4 +96,4 @@ function squareClick(square) {
   }
 }
 
-export { makeRows, boardCreated, getBoardSize, squareClick, initialState, createBoard }
+export { makeRows, boardCreated, getBoardSize, squareClick, initialState, createBoard, resetWin}

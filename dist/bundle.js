@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "962b8121234f0b727075"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9a4fce9a64f0761741d1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -42810,11 +42810,11 @@
 	
 	var _reducer_gameboard2 = _interopRequireDefault(_reducer_gameboard);
 	
-	var _reducer_boardsize = __webpack_require__(281);
+	var _reducer_boardsize = __webpack_require__(282);
 	
 	var _reducer_boardsize2 = _interopRequireDefault(_reducer_boardsize);
 	
-	var _reducer_initial_state = __webpack_require__(282);
+	var _reducer_initial_state = __webpack_require__(283);
 	
 	var _reducer_initial_state2 = _interopRequireDefault(_reducer_initial_state);
 	
@@ -42843,21 +42843,18 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	exports.default = function () {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
 	  var action = arguments[1];
 	
 	  // State argument is not the application state only the state this reducer is responsible for
-	  console.log(action.type);
+	  // console.log(action.type)
 	  switch (action.type) {
 	    case 'BOARD_CREATED':
 	      return action.payload;
 	    case 'SQUARE_CLICKED':
-	
-	      //////////////// Check Horizontal win  //////////////////////
-	      // If gameClickCount === gameLength * 2
-	      // _.find(state.rows, function(val) {});
-	      //////////////// Check horizontal win //////////////////////
 	
 	      ////////////// Check if already clicked ////////////////
 	      if (state.winner) {
@@ -42901,38 +42898,30 @@
 	      var currentCol = newCols[squareId];
 	      var currentSquare = currentRow.squares[squareId];
 	
+	      // Object.freeze(state);
 	      currentSquare.gamePiece = state.currentPiece;
 	
-	      var middleSquare = Math.floor(state.size / 2);
-	      // console.log('middleSquare: ', middleSquare)
-	      // console.log('Game row: ', rowId);
-	      // console.dir(row);     
-	      // console.log('Game square: ', squareId);
-	      // console.dir(square);
-	      // console.log('SQ state', state)
+	      var nextState = function nextState(state) {
+	        var newDiags = state.diagonals.map(function (val) {
+	          return val;
+	        });
 	
-	      ////////////// Set Current Game Pieces ////////////////
-	
-	      var checkClickCount = function checkClickCount(count, collection) {};
-	
-	      var gp = function gp(piece) {
-	        return piece += '_count';
+	        return {
+	          newRows: state.rows.map(function (val) {
+	            return val;
+	          }),
+	          newCols: state.columns.map(function (val) {
+	            return val;
+	          }),
+	          positive: newDiags[1].positive,
+	          negative: newDiags[0].negative,
+	          count: state.clickCount + 1,
+	          newDiags: newDiags,
+	          size: state.size
+	        };
 	      };
 	
-	      var incrementCount = function incrementCount(thing1, thing2, type) {
-	        thing1[type]++;
-	        thing2[type]++;
-	      };
-	
-	      var handleNegDiags = function handleNegDiags(thing1, arr, type) {
-	        thing1[type]++;
-	        thing1.elements[arr[1]] = arr[0];
-	      };
-	
-	      var handlePosDiags = function handlePosDiags(thing1, el, type) {
-	        thing1[type]++;
-	        thing1.elements.push(el);
-	      };
+	      var stateMod = nextState(state);
 	
 	      var handleEl = function handleEl(load) {
 	        var squareEl = load.payload;
@@ -42945,141 +42934,52 @@
 	          rowId: Number(rowEl.id)
 	        };
 	      };
-	      // console.log(handleEl(action))
 	
-	      var checkNegDiags = function checkNegDiags(state, action, piece) {
-	        var els = handleEl(action);
+	      var newEls = handleEl(action);
 	
+	      // Check whether a click is a diagonal click
+	      var checkDiags = function checkDiags(state, els, piece) {
 	        if (els.rowId === els.squareId) {
-	          handleNegDiags(negative, [square, squareId], gp(piece));
+	          utils.handleNegDiags(state.negative, [square, squareId], utils.gp(piece));
 	        }
 	        if (els.rowId + els.squareId === state.size - 1) {
-	          handlePosDiags(positive, square, gp(piece));
+	          utils.handlePosDiags(positive, square, utils.gp(piece));
 	        }
 	      };
 	
+	      // Checking the click to see which piece is which
 	      if (state.clickCount % 2 === 0) {
 	        piece = 'O';
-	        incrementCount(currentCol, currentRow, gp('X'));
-	
-	        // if (rowId === squareId) {
-	        //   handleNegDiags(negative, [square, squareId], gp('X'));
-	        // }
-	        // if (rowId + squareId === state.size - 1) {
-	        //   handlePosDiags(positive, square, gp('X'));
-	        // }
-	
-	        checkNegDiags(state, action, 'X');
+	        utils.incrementCount(currentCol, currentRow, utils.gp('X'));
+	        utils.checkDiags(stateMod, newEls, 'X');
 	      } else if (state.clickCount % 2 !== 0) {
 	        piece = 'X';
-	        incrementCount(currentCol, currentRow, gp('O'));
-	
-	        if (rowId === squareId) {
-	          handleNegDiags(negative, [square, squareId], gp('O'));
-	        }
-	        if (rowId + squareId === state.size - 1) {
-	          handlePosDiags(positive, square, gp('O'));
-	        }
+	        utils.incrementCount(currentCol, currentRow, utils.gp('O'));
+	        utils.checkDiags(stateMod, newEls, 'O');
 	      }
 	
-	      var newPayload = Object.assign({}, state, {
+	      // The modified state to return (will rename newState )
+	      var newPayload = _extends({}, state, {
 	        clickCount: count,
 	        currentPiece: piece,
 	        rows: newRows,
 	        columns: newCols,
 	        diagonals: newDiags
+	
 	      });
 	
-	      ////////////// Set Current Game Pieces ////////////////
-	
-	      var catsGame = function catsGame() {
-	        var state = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-	
-	        state.tie = true;
-	        alert('cat\'s game');
-	        return state;
-	      };
-	      // console.log(newDiags[0])
-	      /////////// Horizontal Win /////////////////////
-	      if (state.clickCount === state.size * state.size + 1) {
-	        return catsGame(newPayload);
-	      }
-	
+	      // Check for a win
 	      if (state.clickCount >= state.size * 2) {
-	        var checkHorXWin = _lodash2.default.find(newRows, function (row) {
-	          return row.X_count === row.length || row.O_count === row.length;
-	        });
-	
 	        if (state.clickCount === state.size * state.size + 1) {
-	          newPayload.tie = true;
-	          console.log(newPayload.tie);
-	          alert('cat\'s game');
-	
-	          return newPayload;
+	          return utils.catsGame(newPayload);
 	        }
-	
-	        if (checkHorXWin) {
-	          newPayload.winner = true;
-	          row.classList.add('game-winner');
-	          alert('X wins!');
-	          console.log(row);
-	          return newPayload;
-	        }
+	        utils.checkHorzWin(stateMod, newPayload, newEls);
+	        utils.checkVertWin(stateMod, newPayload, newEls);
+	        utils.diagonalWinChecker(stateMod, newPayload, 'negative');
+	        utils.diagonalWinChecker(stateMod, newPayload, 'positive');
 	      }
-	      ////////////// Horizontal Win //////////////////
 	
-	      ////////////// Vertical Win ////////////////////
-	      if (state.clickCount >= state.size * 2) {
-	        var checkVertWin = _lodash2.default.find(newCols, function (col) {
-	          return col.X_count === col.length || col.O_count === col.length;
-	        });
-	        if (checkVertWin) {
-	          var winningColumn = document.getElementsByClassName('col-' + square.id);
-	          for (var i = 0; i < winningColumn.length; i++) {
-	            winningColumn[i].classList.add('game-winner');
-	          }
-	          newPayload.winner = true;
-	          alert('Win');
-	          console.log(newPayload);
-	          return newPayload;
-	        }
-	      }
 	      // console.log('SQ state', state)
-	      ////////////// Vertical Win ////////////////////
-	
-	      ////////////// Diagonal Win ////////////////////
-	      // Negative diagnonal
-	      // If rowId === squareId increment negDiagX_count
-	
-	      // Positive diagonal
-	      if (state.clickCount >= state.size * 2) {
-	        var _negative = newPayload.diagonals[0].negative;
-	        var _positive = newPayload.diagonals[1].positive;
-	        var _middleSquare = Math.floor(state.size / 2);
-	        // if (negative.elements.length === state.size) {
-	        if (_negative.X_count === _negative.length || _negative.O_count === _negative.length) {
-	          _negative.elements.forEach(function (el) {
-	            return el.classList.add('game-winner');
-	          });
-	          newPayload.winner = true;
-	          alert('Win');
-	          console.log(newPayload);
-	          return newPayload;
-	        }
-	        if (_positive.X_count === _positive.length || _positive.O_count === _positive.length) {
-	          _positive.elements.forEach(function (el) {
-	            return el.classList.add('game-winner');
-	          });
-	          newPayload.winner = true;
-	          alert('Win');
-	          console.log(newPayload);
-	          return newPayload;
-	        }
-	      }
-	      ////////////// Diagonal Win ////////////////////
-	
-	      // console.log(newRows);
-	
 	      // console.log('SQ action', action)
 	
 	      return newPayload;
@@ -43088,8 +42988,14 @@
 	};
 	
 	var _lodash = __webpack_require__(267);
-
+	
 	var _lodash2 = _interopRequireDefault(_lodash);
+	
+	var _reducer_utils = __webpack_require__(281);
+	
+	var utils = _interopRequireWildcard(_reducer_utils);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43098,6 +43004,124 @@
 
 /***/ },
 /* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var gp = exports.gp = function gp(piece) {
+	  return piece += '_count';
+	};
+	
+	var incrementCount = exports.incrementCount = function incrementCount(thing1, thing2, type) {
+	  thing1[type]++;
+	  thing2[type]++;
+	};
+	
+	var handleNegDiags = exports.handleNegDiags = function handleNegDiags(thing1, arr, type) {
+	  console.log(thing1);
+	  thing1[type]++;
+	  thing1.elements[arr[1]] = arr[0];
+	};
+	
+	var handlePosDiags = exports.handlePosDiags = function handlePosDiags(thing1, el, type) {
+	  thing1[type]++;
+	  thing1.elements.push(el);
+	};
+	
+	var handleEl = exports.handleEl = function handleEl(load) {
+	  var squareEl = load.payload;
+	  var rowEl = squareEl.parentNode;
+	
+	  return {
+	    square: squareEl,
+	    row: rowEl,
+	    squareId: Number(squareEl.id),
+	    rowId: Number(rowEl.id)
+	  };
+	};
+	
+	var checkDiags = exports.checkDiags = function checkDiags(state, els, piece) {
+	  if (els.rowId === els.squareId) {
+	    handleNegDiags(state.negative, [els.square, els.squareId], gp(piece));
+	  }
+	  if (els.rowId + els.squareId === state.size - 1) {
+	    handlePosDiags(state.positive, els.square, gp(piece));
+	  }
+	};
+	
+	var catsGame = exports.catsGame = function catsGame() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	
+	  state.tie = true;
+	  alert('cat\'s game');
+	  return state;
+	};
+	
+	// Check Horizontal win scenarios
+	var checkHorzWin = exports.checkHorzWin = function checkHorzWin(state, newLoad, els) {
+	  // console.log(state)       
+	  var checkWin = _.find(state.newRows, function (row) {
+	    var XHWin = row.X_count === row.length;
+	    var OHWin = row.O_count === row.length;
+	    return XHWin || OHWin;
+	  });
+	
+	  if (checkWin) {
+	    newLoad.winner = true;
+	    els.row.classList.add('game-winner');
+	    alert('Winner!');
+	    return newLoad;
+	  }
+	};
+	
+	// Vertical win function
+	var checkVertWin = exports.checkVertWin = function checkVertWin(state, newLoad, els) {
+	  // console.log(state)       
+	  var checkWin = _.find(state.newCols, function (col) {
+	    var XVWin = col.X_count === col.length;
+	    var OVWin = col.O_count === col.length;
+	    return XVWin || OVWin;
+	  });
+	
+	  if (checkWin) {
+	    var winningColumn = document.getElementsByClassName('col-' + els.square.id);
+	
+	    for (var i = 0; i < winningColumn.length; i++) {
+	      winningColumn[i].classList.add('game-winner');
+	    }
+	
+	    newLoad.winner = true;
+	    alert('Win');
+	    console.log('Vert newLoad', newLoad);
+	    return newLoad;
+	  }
+	};
+	
+	var diagonalWinChecker = exports.diagonalWinChecker = function diagonalWinChecker(state, newLoad, direction) {
+	  var dObj = {};
+	  dObj[direction] = direction === 'negative' ? newLoad.diagonals[0][direction] : newLoad.diagonals[1][direction];
+	
+	  if (dObj[direction].X_count === dObj[direction].length || dObj[direction].O_count === dObj[direction].length) {
+	    dObj[direction].elements.forEach(function (el) {
+	      return el.classList.add('game-winner');
+	    });
+	    newLoad.winner = true;
+	    alert('Win');
+	    console.log(newLoad);
+	    return newLoad;
+	  }
+	};
+	
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_utils.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -43154,7 +43178,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {

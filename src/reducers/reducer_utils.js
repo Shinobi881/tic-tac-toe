@@ -1,22 +1,25 @@
-export const gp = piece => piece += '_count';
-
-export const incrementCount = (thing1, thing2, type) => {
-  thing1[type]++;
-  thing2[type]++;
+export const stateUtil = (input, el) => {
+  const newState = {...input};
+  const newDiags = newState.diagonals.map((val) => val),
+        newRows = newState.rows.map((val) => val),
+        newCols = newState.columns.map((val) => val),
+        
+        
+        currentRow = newRows[el.rowId],
+        currentCol = newCols[el.squareId],
+        currentSquare = currentRow.squares[el.squareId];
+        
+        currentSquare.gamePiece = newState.currentPiece;              
+  
+  return {
+    positive: newDiags[1].positive, currentRow: newRows[el.rowId],
+    negative: newDiags[0].negative, currentCol: newCols[el.squareId],
+    newRows: newRows, newCols: newCols, newDiags: newDiags, 
+    size: newState.size, count: newState.clickCount + 1         
+  };
 }
 
-export const handleNegDiags = (thing1, arr, type) => {
-  console.log(thing1)
-  thing1[type]++;
-  thing1.elements[arr[1]] = arr[0];
-}
-
-export const handlePosDiags = (thing1, el, type) => {
-  thing1[type]++;
-  thing1.elements.push(el);
-}
-
-export const handleEl = (load) => {
+export const elUtil = (load) => {
   let squareEl = load.payload;
   let rowEl = squareEl.parentNode;
 
@@ -27,6 +30,25 @@ export const handleEl = (load) => {
     rowId: Number(rowEl.id),
   }
 }
+
+export const gp = piece => piece += '_count';
+
+export const incrementCount = (thing1, thing2, type) => {
+  thing1[type]++;
+  thing2[type]++;
+}
+
+export const handleNegDiags = (thing1, arr, type) => {
+  thing1[type]++;
+  thing1.elements[arr[1]] = arr[0];
+}
+
+export const handlePosDiags = (thing1, el, type) => {
+  thing1[type]++;
+  thing1.elements.push(el);
+}
+
+
 
 export const checkDiags = (state, els, piece) => {
   if (els.rowId === els.squareId) {
@@ -96,4 +118,5 @@ export const diagonalWinChecker = (state, newLoad, direction) => {
     return newLoad;
   }
 }
+
 
