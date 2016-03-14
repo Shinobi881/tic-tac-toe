@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d2eefa7d5c7e149e387e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "962b8121234f0b727075"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8065,9 +8065,9 @@
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	__webpack_require__(274);
+	__webpack_require__(275);
 	
-	var _reducers = __webpack_require__(278);
+	var _reducers = __webpack_require__(279);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -8081,7 +8081,7 @@
 	  _react2.default.createElement(_app2.default, null)
 	), document.querySelector('.container'));
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
@@ -29477,7 +29477,7 @@
 	
 	var _gameboard2 = _interopRequireDefault(_gameboard);
 	
-	var _boardsize = __webpack_require__(273);
+	var _boardsize = __webpack_require__(274);
 	
 	var _boardsize2 = _interopRequireDefault(_boardsize);
 	
@@ -29515,7 +29515,7 @@
 
 	exports.default = App;
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
@@ -29546,7 +29546,7 @@
 	
 	var _actions_index = __webpack_require__(268);
 	
-	var _gamesquare = __webpack_require__(272);
+	var _gamesquare = __webpack_require__(273);
 	
 	var _gamesquare2 = _interopRequireDefault(_gamesquare);
 	
@@ -29650,7 +29650,7 @@
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GameBoard);
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "gameboard.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "gameboard.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
@@ -42022,19 +42022,17 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.createBoard = exports.initialState = exports.squareClick = exports.getBoardSize = exports.makeBoard = exports.makeRows = exports.INITIAL_STATE = exports.MAKE_BOARD = exports.MAKE_ROWS = exports.GET_BOARD_SIZE = exports.SQUARE_CLICKED = undefined;
+	exports.createBoard = exports.initialState = exports.squareClick = exports.getBoardSize = exports.boardCreated = exports.makeRows = undefined;
 	
 	var _lodash = __webpack_require__(267);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _action_types = __webpack_require__(269);
 	
-	var SQUARE_CLICKED = exports.SQUARE_CLICKED = 'SQUARE_CLICKED';
-	var GET_BOARD_SIZE = exports.GET_BOARD_SIZE = 'GET_BOARD_SIZE';
-	var MAKE_ROWS = exports.MAKE_ROWS = 'MAKE_ROWS';
-	var MAKE_BOARD = exports.MAKE_BOARD = 'MAKE_BOARD';
-	var INITIAL_STATE = exports.INITIAL_STATE = 'INITIAL_STATE';
+	var _action_types2 = _interopRequireDefault(_action_types);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//////////////////// BOARD HELPERS ///////////////
 	var createSquares = function createSquares(position) {
@@ -42043,8 +42041,6 @@
 	    gamePiece: ''
 	  };
 	};
-	
-	////////////////////////////////////////////////////
 	
 	var makeRows = function makeRows(rowSize) {
 	  return {
@@ -42056,20 +42052,14 @@
 	};
 	
 	var createRows = function createRows(rowSize) {
-	  return {
-	    squares: _lodash2.default.times(rowSize, function (i) {
-	      return createSquares(i);
-	    }), index: 0,
-	    rowClickCount: 0, count: 0, length: 0, X_count: 0, O_count: 0
-	  };
-	};
-	
-	var resetWin = function resetWin() {
-	  var rows = document.getElementsByTagName('tr');
-	  var squares = document.getElementsByTagName('td');
-	  console.log(rows);
-	  rows.classList.remove('game-winner');
-	  squares.classList.remove('game-winner');
+	  return _lodash2.default.times(rowSize, function (i) {
+	    return {
+	      squares: _lodash2.default.times(rowSize, function (j) {
+	        return createSquares(j);
+	      }), index: i,
+	      rowClickCount: 0, count: 0, length: rowSize, X_count: 0, O_count: 0
+	    };
+	  });
 	};
 	
 	var createColumns = function createColumns(colSize) {
@@ -42096,55 +42086,13 @@
 	  };
 	};
 	
-	// function makeBoard(rowCreator, boardSize = null) {
-	function makeBoard() {
-	  var board = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-	
-	  console.log(board);
-	  // boardSize = Number(boardSize);
-	
-	  // let board = {
-	  //   rows: [], currentPiece: 'X', size: boardSize,
-	  //   tie: false, clickCount: 2, winner: false
-	  // }; 
-	
-	  // board.diagonals = [
-	  //   {
-	  //     negative: {
-	  //       elements: [], X_count: 0,
-	  //       O_count: 0, length: boardSize       
-	  //     }
-	  //   },   
-	  //   {
-	  //     positive: {
-	  //       elements: [], X_count: 0,
-	  //       O_count: 0, length: boardSize
-	  //     }
-	  //   }
-	  // ];
-	
-	  // board.columns = _.times(boardSize, (i) => {
-	  //   return {
-	  //     position: i, piece: '', elements: [],
-	  //     X_count: 0, O_count: 0, length: boardSize
-	  //   };   
-	  // });
-	
-	  // board.rows = _.times(boardSize, (i) => {
-	  //   let newRow = rowCreator(boardSize);   
-	
-	  //   newRow.index = i;
-	  //   newRow.length = boardSize;
-	  //   board.rows.push(newRow);
-	
-	  //   return newRow;
-	  // });
-	
-	  return {
-	    type: MAKE_BOARD,
-	    payload: board
-	  };
-	}
+	var resetWin = function resetWin() {
+	  var rows = document.getElementsByTagName('tr');
+	  var squares = document.getElementsByTagName('td');
+	  console.log(rows);
+	  rows.classList.remove('game-winner');
+	  squares.classList.remove('game-winner');
+	};
 	
 	function initialState() {
 	  var test = makeBoard(makeRows, 3);
@@ -42156,36 +42104,66 @@
 	}
 	function getBoardSize(size) {
 	  return {
-	    type: GET_BOARD_SIZE,
+	    type: _action_types2.default.GET_BOARD_SIZE,
 	    payload: size
+	  };
+	}
+	
+	function boardCreated() {
+	  var board = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	
+	  return {
+	    type: _action_types2.default.BOARD_CREATED,
+	    payload: board
 	  };
 	}
 	
 	function squareClick(square) {
 	  return {
-	    type: SQUARE_CLICKED,
+	    type: _action_types2.default.SQUARE_CLICKED,
 	    payload: square
 	  };
 	}
 	
 	exports.makeRows = makeRows;
-	exports.makeBoard = makeBoard;
+	exports.boardCreated = boardCreated;
 	exports.getBoardSize = getBoardSize;
 	exports.squareClick = squareClick;
 	exports.initialState = initialState;
 	exports.createBoard = createBoard;
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "actions_index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "actions_index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
 /* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+	
 	'use strict';
 	
-	var isReactClassish = __webpack_require__(270),
-	    isReactElementish = __webpack_require__(271);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var SQUARE_CLICKED = 'SQUARE_CLICKED';
+	var GET_BOARD_SIZE = 'GET_BOARD_SIZE';
+	var BOARD_CREATED = 'BOARD_CREATED';
+	var INITIAL_STATE = 'INITIAL_STATE';
+	
+	exports.default = { BOARD_CREATED: BOARD_CREATED, SQUARE_CLICKED: SQUARE_CLICKED, GET_BOARD_SIZE: GET_BOARD_SIZE };
+	
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "action_types.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 270 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var isReactClassish = __webpack_require__(271),
+	    isReactElementish = __webpack_require__(272);
 	
 	function makeExportsHot(m, React) {
 	  if (isReactElementish(m.exports, React)) {
@@ -42239,7 +42217,7 @@
 
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports) {
 
 	function hasRender(Class) {
@@ -42289,10 +42267,10 @@
 	module.exports = isReactClassish;
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isReactClassish = __webpack_require__(270);
+	var isReactClassish = __webpack_require__(271);
 	
 	function isReactElementish(obj, React) {
 	  if (!obj) {
@@ -42306,7 +42284,7 @@
 	module.exports = isReactElementish;
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -42338,11 +42316,11 @@
 	  });
 	};
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "gamesquare.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "gamesquare.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -42386,6 +42364,7 @@
 	    _this.state = { size: '' };
 	    return _this;
 	  }
+	
 	  // Binds changes to the form
 	
 	
@@ -42394,16 +42373,18 @@
 	    value: function onInputChange(event) {
 	      this.setState({ size: event.target.value });
 	    }
+	
 	    // Events to execute on form submission
 	
 	  }, {
 	    key: 'onFormSubmit',
 	    value: function onFormSubmit(event) {
 	      event.preventDefault();
-	      this.props.makeBoard((0, _actions_index.createBoard)(this.state.size));
 	      this.props.getBoardSize(this.state.size);
+	      this.props.boardCreated((0, _actions_index.createBoard)(this.state.size));
 	      this.setState({ size: '' });
 	    }
+	
 	    // Render the form and submit button
 	
 	  }, {
@@ -42434,6 +42415,9 @@
 	  return BoardSize;
 	}(_react.Component);
 	
+	// Map properties and actions to Redux reducer
+	
+	
 	function mapStateToProps(state) {
 	  return {
 	    size: state.boardSize
@@ -42441,16 +42425,16 @@
 	}
 	
 	function mapDispatchToProps(dispatch) {
-	  return (0, _redux.bindActionCreators)({ makeBoard: _actions_index.makeBoard, getBoardSize: _actions_index.getBoardSize }, dispatch);
+	  return (0, _redux.bindActionCreators)({ boardCreated: _actions_index.boardCreated, getBoardSize: _actions_index.getBoardSize }, dispatch);
 	}
 	
 	exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(BoardSize);
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "boardsize.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "boardsize.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -42460,17 +42444,17 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(275);
+	var content = __webpack_require__(276);
 	if (typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(277)(content, {});
+	var update = __webpack_require__(278)(content, {});
 	if (content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if (true) {
 		// When the styles change, update the <style> tags
 		if (!content.locals) {
-			module.hot.accept(275, function () {
-				var newContent = __webpack_require__(275);
+			module.hot.accept(276, function () {
+				var newContent = __webpack_require__(276);
 				if (typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -42481,14 +42465,14 @@
 		});
 	}
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "main.scss" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "main.scss" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(276)();
+	exports = module.exports = __webpack_require__(277)();
 	// imports
 	
 	
@@ -42499,7 +42483,7 @@
 
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports) {
 
 	/*
@@ -42555,7 +42539,7 @@
 
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -42809,7 +42793,7 @@
 
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -42822,15 +42806,15 @@
 	
 	var _redux = __webpack_require__(250);
 	
-	var _reducer_gameboard = __webpack_require__(279);
+	var _reducer_gameboard = __webpack_require__(280);
 	
 	var _reducer_gameboard2 = _interopRequireDefault(_reducer_gameboard);
 	
-	var _reducer_boardsize = __webpack_require__(280);
+	var _reducer_boardsize = __webpack_require__(281);
 	
 	var _reducer_boardsize2 = _interopRequireDefault(_reducer_boardsize);
 	
-	var _reducer_initial_state = __webpack_require__(281);
+	var _reducer_initial_state = __webpack_require__(282);
 	
 	var _reducer_initial_state2 = _interopRequireDefault(_reducer_initial_state);
 	
@@ -42844,11 +42828,11 @@
 	
 	exports.default = rootReducer;
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -42866,7 +42850,7 @@
 	  // State argument is not the application state only the state this reducer is responsible for
 	  console.log(action.type);
 	  switch (action.type) {
-	    case 'MAKE_BOARD':
+	    case 'BOARD_CREATED':
 	      return action.payload;
 	    case 'SQUARE_CLICKED':
 	
@@ -42901,67 +42885,100 @@
 	      var newDiags = state.diagonals.map(function (val) {
 	        return val;
 	      });
-	      var piece = '';
+	      var positive = newDiags[1].positive;
+	      var negative = newDiags[0].negative;
+	
 	      var count = state.clickCount + 1;
+	      var piece = '';
+	
 	      var square = action.payload;
 	      var row = square.parentNode;
+	
 	      var squareId = Number(square.id);
 	      var rowId = Number(row.id);
+	
 	      var currentRow = newRows[rowId];
+	      var currentCol = newCols[squareId];
 	      var currentSquare = currentRow.squares[squareId];
 	
-	      /////////// Tally Game Pieces /////////////////
-	      //   console.log(square.valueOf())
-	      //   console.dir(square)
-	      // if (square.value === 'X') {
-	      //   console.log(newRows[rowId].X_count)
-	      //   newRows[rowId].X_count++;
-	      // } else if (square.value === 'O') {
-	      //   newRows[rowId].O_count++;
-	      // }
-	
-	      // console.log('Current row: ', newRows[rowId])
-	      /////////// Tally Game Pieces /////////////////
-	
 	      currentSquare.gamePiece = state.currentPiece;
+	
 	      var middleSquare = Math.floor(state.size / 2);
-	      console.log('middleSquare: ', middleSquare);
-	      console.log('Game row: ', rowId);
+	      // console.log('middleSquare: ', middleSquare)
+	      // console.log('Game row: ', rowId);
 	      // console.dir(row);     
-	      console.log('Game square: ', squareId);
+	      // console.log('Game square: ', squareId);
 	      // console.dir(square);
 	      // console.log('SQ state', state)
 	
 	      ////////////// Set Current Game Pieces ////////////////
 	
+	      var checkClickCount = function checkClickCount(count, collection) {};
+	
+	      var gp = function gp(piece) {
+	        return piece += '_count';
+	      };
+	
+	      var incrementCount = function incrementCount(thing1, thing2, type) {
+	        thing1[type]++;
+	        thing2[type]++;
+	      };
+	
+	      var handleNegDiags = function handleNegDiags(thing1, arr, type) {
+	        thing1[type]++;
+	        thing1.elements[arr[1]] = arr[0];
+	      };
+	
+	      var handlePosDiags = function handlePosDiags(thing1, el, type) {
+	        thing1[type]++;
+	        thing1.elements.push(el);
+	      };
+	
+	      var handleEl = function handleEl(load) {
+	        var squareEl = load.payload;
+	        var rowEl = squareEl.parentNode;
+	
+	        return {
+	          square: squareEl,
+	          row: rowEl,
+	          squareId: Number(squareEl.id),
+	          rowId: Number(rowEl.id)
+	        };
+	      };
+	      // console.log(handleEl(action))
+	
+	      var checkNegDiags = function checkNegDiags(state, action, piece) {
+	        var els = handleEl(action);
+	
+	        if (els.rowId === els.squareId) {
+	          handleNegDiags(negative, [square, squareId], gp(piece));
+	        }
+	        if (els.rowId + els.squareId === state.size - 1) {
+	          handlePosDiags(positive, square, gp(piece));
+	        }
+	      };
+	
 	      if (state.clickCount % 2 === 0) {
-	        newCols[squareId].X_count++;
-	        currentRow.X_count++;
 	        piece = 'O';
+	        incrementCount(currentCol, currentRow, gp('X'));
 	
-	        if (rowId === squareId) {
-	          newDiags[0].negative.X_count++;
-	          newDiags[0].negative.elements[squareId] = square;
+	        // if (rowId === squareId) {
+	        //   handleNegDiags(negative, [square, squareId], gp('X'));
+	        // }
+	        // if (rowId + squareId === state.size - 1) {
+	        //   handlePosDiags(positive, square, gp('X'));
+	        // }
 	
-	          console.log(newDiags[0].negative);
-	        }
-	        if (rowId + squareId === state.size - 1) {
-	          newDiags[1].positive.X_count++;
-	          newDiags[1].positive.elements.push(square);
-	        }
+	        checkNegDiags(state, action, 'X');
 	      } else if (state.clickCount % 2 !== 0) {
-	        newCols[squareId].O_count++;
-	        currentRow.O_count++;
 	        piece = 'X';
+	        incrementCount(currentCol, currentRow, gp('O'));
 	
 	        if (rowId === squareId) {
-	          newDiags[0].negative.O_count++;
-	          newDiags[0].negative.elements.push(square);
-	          console.log(newDiags[0].negative);
+	          handleNegDiags(negative, [square, squareId], gp('O'));
 	        }
 	        if (rowId + squareId === state.size - 1) {
-	          newDiags[1].positive.O_count++;
-	          newDiags[1].positive.elements.push(square);
+	          handlePosDiags(positive, square, gp('O'));
 	        }
 	      }
 	
@@ -42975,15 +42992,19 @@
 	
 	      ////////////// Set Current Game Pieces ////////////////
 	
+	      var catsGame = function catsGame() {
+	        var state = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	
+	        state.tie = true;
+	        alert('cat\'s game');
+	        return state;
+	      };
 	      // console.log(newDiags[0])
 	      /////////// Horizontal Win /////////////////////
 	      if (state.clickCount === state.size * state.size + 1) {
-	        newPayload.tie = true;
-	        console.log(newPayload.tie);
-	        alert('cat\'s game');
-	
-	        return newPayload;
+	        return catsGame(newPayload);
 	      }
+	
 	      if (state.clickCount >= state.size * 2) {
 	        var checkHorXWin = _lodash2.default.find(newRows, function (row) {
 	          return row.X_count === row.length || row.O_count === row.length;
@@ -42999,8 +43020,8 @@
 	
 	        if (checkHorXWin) {
 	          newPayload.winner = true;
-	          alert('X wins!');
 	          row.classList.add('game-winner');
+	          alert('X wins!');
 	          console.log(row);
 	          return newPayload;
 	        }
@@ -43023,7 +43044,7 @@
 	          return newPayload;
 	        }
 	      }
-	      console.log('SQ state', state);
+	      // console.log('SQ state', state)
 	      ////////////// Vertical Win ////////////////////
 	
 	      ////////////// Diagonal Win ////////////////////
@@ -43032,12 +43053,12 @@
 	
 	      // Positive diagonal
 	      if (state.clickCount >= state.size * 2) {
-	        var negative = newPayload.diagonals[0].negative;
-	        var positive = newPayload.diagonals[1].positive;
+	        var _negative = newPayload.diagonals[0].negative;
+	        var _positive = newPayload.diagonals[1].positive;
 	        var _middleSquare = Math.floor(state.size / 2);
 	        // if (negative.elements.length === state.size) {
-	        if (negative.X_count === negative.length || negative.O_count === negative.length) {
-	          negative.elements.forEach(function (el) {
+	        if (_negative.X_count === _negative.length || _negative.O_count === _negative.length) {
+	          _negative.elements.forEach(function (el) {
 	            return el.classList.add('game-winner');
 	          });
 	          newPayload.winner = true;
@@ -43045,8 +43066,8 @@
 	          console.log(newPayload);
 	          return newPayload;
 	        }
-	        if (positive.X_count === positive.length || positive.O_count === positive.length) {
-	          positive.elements.forEach(function (el) {
+	        if (_positive.X_count === _positive.length || _positive.O_count === _positive.length) {
+	          _positive.elements.forEach(function (el) {
 	            return el.classList.add('game-winner');
 	          });
 	          newPayload.winner = true;
@@ -43072,11 +43093,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_gameboard.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_gameboard.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -43129,11 +43150,11 @@
 	// }
 	"use strict";
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_boardsize.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_boardsize.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -43155,7 +43176,7 @@
 	  return state;
 	};
 	
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(269); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_initial_state.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(270); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer_initial_state.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ }

@@ -7,7 +7,7 @@ export default (props, clickHandler) => {
   if (!props.gameBoard) {
     return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
   }
-    console.log('loggin val', props.gameBoard.rows)
+    
   return _.map(props.gameBoard.rows, (val) => {
     return (
       <tr key={val.index}

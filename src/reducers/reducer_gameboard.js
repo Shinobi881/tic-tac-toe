@@ -36,21 +36,22 @@ export default function(state = null, action) {
       let newRows = state.rows.map((val) => val);   
       let newCols = state.columns.map((val) => val);
       let newDiags = state.diagonals.map((val) => val);
-      let piece = '';
+      let positive = newDiags[1].positive;
+      let negative = newDiags[0].negative;
+      
       let count = state.clickCount + 1;
+      let piece = '';
+
+      
       let square = action.payload;
       let row = square.parentNode;
+      
       let squareId = Number(square.id);
       let rowId = Number(row.id);
-      let currentRow = newRows[rowId];
       
-      let currentSquare = currentRow.squares[squareId];
+      let currentRow = newRows[rowId];
       let currentCol = newCols[squareId];
-
-
-
-      let positive = newDiags[1].positive;
-      let negative =newDiags[0].negative;
+      let currentSquare = currentRow.squares[squareId];
       
 
       currentSquare.gamePiece = state.currentPiece;
@@ -58,6 +59,22 @@ export default function(state = null, action) {
 
 
       let middleSquare = Math.floor(state.size / 2);
+
+      const nextState = (state) => {
+        const newDiags = state.diagonals.map((val) => val);
+        
+        return {
+          newRows: state.rows.map((val) => val),
+          newCols: state.columns.map((val) => val),
+          positive: newDiags[1].positive,
+          negative: newDiags[0].negative,
+          count: state.clickCount + 1,
+          newDiags: newDiags,
+        }
+      }
+
+      const stateMod = Object.freeze(nextState(state));
+
       // console.log('middleSquare: ', middleSquare)
       // console.log('Game row: ', rowId);
       // console.dir(row);      
@@ -67,6 +84,7 @@ export default function(state = null, action) {
 
       ////////////// Set Current Game Pieces ////////////////
       
+
      const checkClickCount = (count, collection) => {
 
       }
@@ -88,31 +106,43 @@ export default function(state = null, action) {
         thing1.elements.push(el);
       }
 
-      // handleDiags(negative, [square, squareId], 'X');
+      const handleEl = (load) => {
+        let squareEl = load.payload;
+        let rowEl = squareEl.parentNode;
 
-
-      if (state.clickCount % 2 === 0) {
-        piece = 'O';
-        incrementCount(currentCol, currentRow, gp('X'));       
-
-        if (rowId === squareId) {
-          handleNegDiags(negative, [square, squareId], gp('X'));
-        } 
-        if (rowId + squareId === state.size - 1) {
-          handlePosDiags(positive, square, gp('X'));
-        }
-      } else if (state.clickCount % 2 !== 0) {
-        piece = 'X';        
-        incrementCount(currentCol, currentRow, gp('O'));
-        
-        if (rowId === squareId) {
-          handleNegDiags(negative, [square, squareId], gp('X'));
-        } 
-        if (rowId + squareId === state.size - 1) {
-          handlePosDiags(positive, square, gp('X'));
+        return {
+          square: squareEl,
+          row: rowEl,
+          squareId: Number(squareEl.id),
+          rowId: Number(rowEl.id),
         }
       }
 
+      let newEls = handleEl(action);
+
+      const checkDiags = (state, action, piece) => {
+        let els = handleEl(action);
+        
+        if (els.rowId === els.squareId) {
+          handleNegDiags(negative, [square, squareId], gp(piece));
+        }
+        if (els.rowId + els.squareId === state.size - 1) {
+          handlePosDiags(positive, square, gp(piece));
+        }        
+      }
+
+      // Checking the click to see which piece is which
+      if (state.clickCount % 2 === 0) {
+        piece = 'O';
+        incrementCount(currentCol, currentRow, gp('X'));       
+        checkDiags(state, action, 'X');
+      } else if (state.clickCount % 2 !== 0) {
+        piece = 'X';        
+        incrementCount(currentCol, currentRow, gp('O'));
+        checkDiags(state, action, 'O');
+      }
+
+      // The modified state to return (will rename newState )
       let newPayload = Object.assign({}, state, {
         clickCount: count,
         currentPiece: piece,
@@ -121,42 +151,59 @@ export default function(state = null, action) {
         diagonals: newDiags
       });
 
-      ////////////// Set Current Game Pieces ////////////////
-
+      // Cat's game
       const catsGame = (state = null) => {
         state.tie = true;
         alert('cat\'s game' );        
         return state;
       }
-      // console.log(newDiags[0])
-      /////////// Horizontal Win /////////////////////
+      
       if (state.clickCount === (state.size * state.size) + 1) {
         return catsGame(newPayload);
       }
 
-      if (state.clickCount >= (state.size * 2)) {
-        let checkHorXWin= _.find(newRows, (row) => { return row.X_count === row.length || row.O_count === row.length});
-        
-        if (state.clickCount === (state.size * state.size) + 1) {
-          newPayload.tie = true;
-          console.log(newPayload.tie)
-          alert('cat\'s game' );
-          
-          return newPayload;
-        }
-        
-        if (checkHorXWin) {
-          newPayload.winner = true;
-          row.classList.add('game-winner');
-          alert('X wins!');
-          console.log(row)
-          return newPayload;
-        }
+      ////////////////////////
 
+      // const nextState = (state) => {
+      //   const newDiags = state.diagonals.map((val) => val);
+        
+      //   return {
+      //     newRows: state.rows.map((val) => val),
+      //     newCols: state.columns.map((val) => val),
+      //     positive: newDiags[1].positive,
+      //     negative: newDiags[0].negative,
+      //     count: state.clickCount + 1,
+      //     newDiags: newDiags,
+      //   }
+      // }
+
+      // Horizontal win function
+      const checkHorzWin = (state, newLoad, els) => {
+        console.log(state)        
+        let checkWin = _.find(state.newRows, (row) => { 
+          let XHWin = row.X_count === row.length;
+          let OHWin = row.O_count === row.length;
+          return XHWin || OHWin
+        });
+
+        if (checkWin) {
+          newLoad.winner = true;
+          els.row.classList.add('game-winner');
+          alert('Winner!');
+          return newLoad;
+        }
       }
-      ////////////// Horizontal Win //////////////////
+
+      // Check for a horizontal win 
+      if (state.clickCount >= (state.size * 2)) {
+        if (state.clickCount === (state.size * state.size) + 1) {
+          return catsGame(newPayload);
+        }        
+        checkHorzWin(stateMod, newPayload, newEls);
+      }
       
-      ////////////// Vertical Win ////////////////////
+      
+      // Check for a vertical win scenario
       if (state.clickCount >= (state.size * 2)) {
         let checkVertWin = _.find(newCols, (col) => { return col.X_count === col.length || col.O_count === col.length });
         if (checkVertWin) {
@@ -170,14 +217,9 @@ export default function(state = null, action) {
           return newPayload;
         }
       }
-      console.log('SQ state', state)
-      ////////////// Vertical Win ////////////////////
+      // console.log('SQ state', state)
 
-      ////////////// Diagonal Win ////////////////////
-        // Negative diagnonal
-          // If rowId === squareId increment negDiagX_count
-      
-        // Positive diagonal
+      // Check for a diagonal win scenario
       if (state.clickCount >= (state.size * 2)) {
         let negative = newPayload.diagonals[0].negative;
         let positive = newPayload.diagonals[1].positive;
@@ -198,7 +240,6 @@ export default function(state = null, action) {
           return newPayload;
         }
       }
-      ////////////// Diagonal Win ////////////////////
 
 
       // console.log(newRows);
