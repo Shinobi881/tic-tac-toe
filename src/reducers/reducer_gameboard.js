@@ -1,7 +1,12 @@
 import _ from 'lodash';
+import * as utils from './reducer_utils';
+
+
+
 export default function(state = null, action) {
   // State argument is not the application state only the state this reducer is responsible for
-  console.log(action.type)
+  // console.log(action.type)
+  console.dir(utils)
   switch(action.type) {
     case 'BOARD_CREATED':
       return action.payload
@@ -70,6 +75,7 @@ export default function(state = null, action) {
           negative: newDiags[0].negative,
           count: state.clickCount + 1,
           newDiags: newDiags,
+          size: state.size
         }
       }
 
@@ -85,7 +91,7 @@ export default function(state = null, action) {
       ////////////// Set Current Game Pieces ////////////////
       
 
-     const checkClickCount = (count, collection) => {
+      const checkClickCount = (count, collection) => {
 
       }
 
@@ -120,26 +126,24 @@ export default function(state = null, action) {
 
       let newEls = handleEl(action);
 
-      const checkDiags = (state, action, piece) => {
-        let els = handleEl(action);
-        
+      const checkDiags = (state, els, piece) => {
         if (els.rowId === els.squareId) {
-          handleNegDiags(negative, [square, squareId], gp(piece));
+          utils.handleNegDiags(state.negative, [square, squareId], utils.gp(piece));
         }
         if (els.rowId + els.squareId === state.size - 1) {
-          handlePosDiags(positive, square, gp(piece));
+          utils.handlePosDiags(positive, square, utils.gp(piece));
         }        
       }
 
       // Checking the click to see which piece is which
       if (state.clickCount % 2 === 0) {
         piece = 'O';
-        incrementCount(currentCol, currentRow, gp('X'));       
-        checkDiags(state, action, 'X');
+        utils.incrementCount(currentCol, currentRow, utils.gp('X'));       
+        utils.checkDiags(stateMod, newEls, 'X');
       } else if (state.clickCount % 2 !== 0) {
         piece = 'X';        
-        incrementCount(currentCol, currentRow, gp('O'));
-        checkDiags(state, action, 'O');
+        utils.incrementCount(currentCol, currentRow, utils.gp('O'));
+        utils.checkDiags(stateMod, newEls, 'O');
       }
 
       // The modified state to return (will rename newState )
@@ -148,7 +152,8 @@ export default function(state = null, action) {
         currentPiece: piece,
         rows: newRows,
         columns: newCols,
-        diagonals: newDiags
+        diagonals: newDiags,
+
       });
 
       // Cat's game
@@ -159,7 +164,7 @@ export default function(state = null, action) {
       }
       
       if (state.clickCount === (state.size * state.size) + 1) {
-        return catsGame(newPayload);
+        return utils.catsGame(newPayload);
       }
 
       ////////////////////////
@@ -218,37 +223,67 @@ export default function(state = null, action) {
         }
       }
 
-      // Check for a horizontal win 
+      // Diagonal win function
+      const diagonalWin = (state, newLoad, direction) => {
+        if (newLoad[direction].X_count === newLoad[direction].length || newLoad[direction].O_count === newLoad[direction].length ) {
+          newLoad[direction].elements.forEach((el) => el.classList.add('game-winner'));
+          newLoad.winner = true;
+          alert('Win')
+          console.log(newLoad)
+          return newLoad;
+        }
+      }
+
+      // Diagonal win function
+      const diagonalWinChecker = (state, newLoad, direction) => {
+        let dObj = {};
+        dObj[direction] = direction === 'negative' ? newLoad.diagonals[0][direction] : newLoad.diagonals[1][direction];
+
+        if (dObj[direction].X_count === dObj[direction].length || dObj[direction].O_count === dObj[direction].length ) {
+          dObj[direction].elements.forEach((el) => el.classList.add('game-winner'));
+          newLoad.winner = true;
+          alert('Win')
+          console.log(newLoad)
+          return newLoad;
+        }
+      }
+
+      // Check for a win 
       if (state.clickCount >= (state.size * 2)) {
         if (state.clickCount === (state.size * state.size) + 1) {
-          return catsGame(newPayload);
+          return utils.catsGame(newPayload);
         }        
-        checkHorzWin(stateMod, newPayload, newEls);
-        checkVertWin(stateMod, newPayload, newEls);
+        utils.checkHorzWin(stateMod, newPayload, newEls);
+        utils.checkVertWin(stateMod, newPayload, newEls);
+        utils.diagonalWinChecker(stateMod, newPayload, 'negative');
+        utils.diagonalWinChecker(stateMod, newPayload, 'positive');
       }
       
       // console.log('SQ state', state)
+      
 
+      
       // Check for a diagonal win scenario
       if (state.clickCount >= (state.size * 2)) {
-        let negative = newPayload.diagonals[0].negative;
-        let positive = newPayload.diagonals[1].positive;
-        let middleSquare = Math.floor(state.size / 2);
+        // let negative = newPayload.diagonals[0].negative;
+        // let positive = newPayload.diagonals[1].positive;
+        // let middleSquare = Math.floor(state.size / 2);
         // if (negative.elements.length === state.size) {
-        if (negative.X_count === negative.length || negative.O_count === negative.length ) {
-          negative.elements.forEach((el) => el.classList.add('game-winner'));
-          newPayload.winner = true;
-          alert('Win')
-          console.log(newPayload)
-          return newPayload;
-        }
-        if ((positive.X_count === positive.length || positive.O_count === positive.length) ) {
-          positive.elements.forEach((el) => el.classList.add('game-winner'));
-          newPayload.winner = true;
-          alert('Win')
-          console.log(newPayload)
-          return newPayload;
-        }
+        // if (negative.X_count === negative.length || negative.O_count === negative.length ) {
+        //   negative.elements.forEach((el) => el.classList.add('game-winner'));
+        //   newPayload.winner = true;
+        //   alert('Win')
+        //   console.log(newPayload)
+        //   return newPayload;
+        // }
+        
+        // if ((positive.X_count === positive.length || positive.O_count === positive.length) ) {
+        //   positive.elements.forEach((el) => el.classList.add('game-winner'));
+        //   newPayload.winner = true;
+        //   alert('Win')
+        //   console.log(newPayload)
+        //   return newPayload;
+        // }
       }
 
 
