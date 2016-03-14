@@ -18,9 +18,10 @@ Each click on the board should alternate between X and O until someone wins or t
 **Basic:**
 
 - [x] Each click on the board should alternate between X and O until someone wins or the game ends in a tie.
-- [ ] Please ensure that your code is DRY (Don’t Repeat Yourself), readable, formatted consistently, etc.
+- [x] Please ensure that your code is DRY (Don’t Repeat Yourself), readable, formatted consistently, etc.
 - [x] The code should work on the latest versions of Chrome, Firefox & Safari.
 - [x] Add JavaScript(ES2015) so an actual tic­tac­toe game can be played starting with a blank board.
+- [x] The code should work on the latest versions of Chrome, Firefox & Safari.
 
 **Bonus:**
 

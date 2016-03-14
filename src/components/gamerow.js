@@ -2,8 +2,6 @@ import React from 'react';
 import renderSquares from './gamesquare';
 
 export default (props, clickHandler) => {
-  // let props = this.props;
-  console.log(props)
   if (!props.gameBoard) {
     return <tr><td><h2>Please choose a gameboard size!</h2></td></tr>
   }

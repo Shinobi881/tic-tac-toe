@@ -1,4 +1,5 @@
 import React from 'react';
+import Paper from 'material-ui/lib/paper';
 
 export default (data) => {
   return data.map((square, squareIndex) => {
@@ -8,9 +9,11 @@ export default (data) => {
         key={square.position}
         id={square.position} 
         value={square.gamePiece}
-      >
-        {square.gamePiece}
+      >{square.gamePiece}
+        <div>        
+          <Paper zDepth={5}  rounded={false}/>
+        </div>
       </td>
-    )
-  })
-}
+    );
+  });
+};

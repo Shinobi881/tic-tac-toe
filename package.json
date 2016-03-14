@@ -43,6 +43,7 @@
     "deep-freeze": "0.0.1",
     "fixed-data-table": "^0.6.0",
     "material-ui": "^0.15.0-alpha.1",
+    "normalize.css": "^3.0.3",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",

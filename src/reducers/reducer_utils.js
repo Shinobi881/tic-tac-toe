@@ -1,10 +1,9 @@
+// Copies the current state modifies it and returns 
 export const stateUtil = (input, el) => {
   const newState = {...input};
   const newDiags = newState.diagonals.map((val) => val),
         newRows = newState.rows.map((val) => val),
-        newCols = newState.columns.map((val) => val),
-        
-        
+        newCols = newState.columns.map((val) => val),        
         currentRow = newRows[el.rowId],
         currentCol = newCols[el.squareId],
         currentSquare = currentRow.squares[el.squareId];
@@ -19,6 +18,7 @@ export const stateUtil = (input, el) => {
   };
 }
 
+// Handles the data of the element(s) that were clicked
 export const elUtil = (load) => {
   let squareEl = load.payload;
   let rowEl = squareEl.parentNode;
@@ -31,25 +31,28 @@ export const elUtil = (load) => {
   }
 }
 
+// Just a simple help, largely useless
 export const gp = piece => piece += '_count';
 
+// Increments the X or O count
 export const incrementCount = (thing1, thing2, type) => {
   thing1[type]++;
   thing2[type]++;
 }
 
+// Process negative diagonals
 export const handleNegDiags = (thing1, arr, type) => {
   thing1[type]++;
   thing1.elements[arr[1]] = arr[0];
 }
 
+// Process positive diagonals
 export const handlePosDiags = (thing1, el, type) => {
   thing1[type]++;
   thing1.elements.push(el);
 }
 
-
-
+// Checks for diagonal clicks and processes them 
 export const checkDiags = (state, els, piece) => {
   if (els.rowId === els.squareId) {
     handleNegDiags(state.negative, [els.square, els.squareId], gp(piece));
@@ -59,6 +62,7 @@ export const checkDiags = (state, els, piece) => {
   }         
 }
 
+// Cat's game function
 export const catsGame = (state = null) => {
   state.tie = true;
   alert('cat\'s game' );        
@@ -77,7 +81,7 @@ export const checkHorzWin = (state, newLoad, els) => {
   if (checkWin) {
     newLoad.winner = true;
     els.row.classList.add('game-winner');
-    alert('Winner!');
+    alert('WINNER!');
     return newLoad;
   }
 }
@@ -100,21 +104,28 @@ export const checkVertWin = (state, newLoad, els) => {
     }
 
     newLoad.winner = true;
-    alert('Win')
+    alert('WINNER!')
     console.log('Vert newLoad',  newLoad)
     return newLoad;
   }
 }
 
+// Checks for and processes a diagonal win scenario
 export const diagonalWinChecker = (state, newLoad, direction) => {
-  let dObj = {};
-  dObj[direction] = direction === 'negative' ? newLoad.diagonals[0][direction] : newLoad.diagonals[1][direction];
+  let dObj = {},
+      negDiagWin = newLoad.diagonals[0][direction],
+      posDiagWin = newLoad.diagonals[1][direction];
+  
+  dObj[direction] = direction === 'negative' ? negDiagWin : posDiagWin;
+  
+  let XDiagWin = dObj[direction].X_count === dObj[direction].length,
+      ODiagWin = dObj[direction].O_count === dObj[direction].length;
+  
 
-  if (dObj[direction].X_count === dObj[direction].length || dObj[direction].O_count === dObj[direction].length ) {
+  if (XDiagWin || ODiagWin ) {
     dObj[direction].elements.forEach((el) => el.classList.add('game-winner'));
     newLoad.winner = true;
-    alert('Win')
-    console.log(newLoad)
+    alert('WINNER')
     return newLoad;
   }
 }

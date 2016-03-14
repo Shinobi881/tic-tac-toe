@@ -1,22 +1,48 @@
 import _ from 'lodash';
-
 import ACTIONS from './action_types';
 
+// Dispatch the initial state action
+const initialState = () => {  
+  let test = makeBoard(makeRows, 3);
 
-//////////////////// BOARD HELPERS ///////////////
+  return {
+    type: INITIAL_STATE,
+    payload: test
+  };
+};
+
+// Dsipatch the user input action
+const getBoardSize = (size = 3) => {
+  return {
+    type: ACTIONS.GET_BOARD_SIZE,
+    payload: size
+  };
+};
+
+// Dispatch the board created event
+const boardCreated = (board = null) => {  
+  return {
+    type: ACTIONS.BOARD_CREATED,
+    payload: board
+  };
+};
+
+// dispatch the square click event
+const squareClick = (square) => {
+  return {
+    type: ACTIONS.SQUARE_CLICKED,
+    payload: square
+  };
+};
+
+// Data for each game square
 const createSquares = (position) => {
   return {
     position: position,
     gamePiece: ''
   };
-}
-
-const makeRows = (rowSize) => {
-  return {
-    squares: _.times(rowSize, (i) => createSquares(i)), index: 0, 
-    rowClickCount: 0, count: 0, length: 0, X_count: 0, O_count: 0
-  };
 };
+
 
 const createRows = (rowSize) => {
   return _.times(rowSize, (i) => {
@@ -24,11 +50,11 @@ const createRows = (rowSize) => {
       squares: _.times(rowSize, (j) => createSquares(j)), index: i, 
       rowClickCount: 0, count: 0, length: rowSize, X_count: 0, O_count: 0
     };
-  })
+  });
 };
 
 
-
+// Data for gameboard columns
 const createColumns = (colSize) => {
   return _.times(colSize, (i) => {
     return {
@@ -36,15 +62,17 @@ const createColumns = (colSize) => {
       X_count: 0, O_count: 0, length: colSize
     }; 
   });
-}
+};
 
+// Data for gameboard diagonals
 const createDiagonals = (diagSize) => {
   return [
     { negative: { elements: [], X_count: 0, O_count: 0, length: diagSize } },    
     { positive: { elements: [], X_count: 0, O_count: 0, length: diagSize } }
   ];
-}
+};
 
+// Creates data for the whole gameboard
 const createBoard = (boardSize = null) => {
   boardSize = Number(boardSize);
   return {
@@ -60,40 +88,11 @@ const resetWin = () => {
   
   _.forEach(rows, (row) => {
     row.classList.remove('game-winner');    
-  })
+  });
 
   _.forEach(squares, (square) => {
     square.classList.remove('game-winner');    
-  })
+  });
 };
 
-function initialState() {  
-  let test = makeBoard(makeRows, 3);
-
-  return {
-    type: INITIAL_STATE,
-    payload: test
-  };
-}
-function getBoardSize(size) {
-  return {
-    type: ACTIONS.GET_BOARD_SIZE,
-    payload: size
-  }
-}
-
-function boardCreated(board = null) {  
-  return {
-    type: ACTIONS.BOARD_CREATED,
-    payload: board
-  }
-}
-
-function squareClick(square) {
-  return {
-    type: ACTIONS.SQUARE_CLICKED,
-    payload: square
-  }
-}
-
-export { makeRows, boardCreated, getBoardSize, squareClick, initialState, createBoard, resetWin}
+export { boardCreated, getBoardSize, squareClick, initialState, createBoard, resetWin };

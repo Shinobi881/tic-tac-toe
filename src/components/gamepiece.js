@@ -1,44 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+// Custom game piece
 class GamePiece extends Component {
   constructor(props){
     super(props);
-    this.state = { 
-      piece: '',
-      n_squares: 0
-    };
-
-  }
-  creatSquares(num) {
-    var squares = [];
-    this.setState({n_squares: num});
-
-    for (var i = 0; i < num; i++) {
-      squares.push(
-        `<td 
-          className="game-square" 
-          id=${num} 
-          onClick={this.onSquareClick.bind(this)}
-        >
-          {this.state.piece}
-        </td>`
-      )
-    }
-    return sqaures; 
-
-  }
-  onSquareClick(event) {
-    this.setState({ piece: 'X' })
-    event.target.textContent = this.state.piece;
-    console.log(this)
+    this.state = {};
 
   }
   render() {
     return (
-      <td className="game-square" onClick={this.onSquareClick.bind(this)}>
-        {this.state.piece}
-      </td>
+      <div>
+        <img alt="" src={} />
+      </div>
     )
   }
 }
-export default GamePiece;
+
+const mapStateToProps = (state) => {
+  return {
+    gameBoard: state.gameBoard
+  }
+}
+export default connect(mapStateToProps)(GamePiece);

@@ -1,12 +1,13 @@
 .game-board {
-  border-style: solid;
-  border-color: black;
-  border-width: 10px; 
-  table-layout: auto;
-  // width: 600px;
-  // height: 200px;
+  max-width: 100%;
+  max-width: 100%;  
 }
 
 .game-winner {
   background-color: gray !important;
+}
+
+.game-container {
+  margin: auto;
+  width: 40%;
 }

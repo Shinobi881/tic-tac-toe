@@ -5,7 +5,6 @@ import * as utils from './reducer_utils';
 
 
 export default function(state = null, action) {
-  // State argument is not the application state only the state this reducer is responsible for
   switch(action.type) {
     case 'BOARD_CREATED':
       return action.payload;
@@ -26,7 +25,7 @@ export default function(state = null, action) {
         return state;
       } 
 
-      
+      // State data for win checks
       let count = state.clickCount + 1;
       let piece = '';
       let newEls = utils.elUtil(action);

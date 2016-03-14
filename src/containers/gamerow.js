@@ -5,23 +5,15 @@ import _ from 'lodash';
 
 import {makeRows, makeBoard, getBoardSize, initialState} from '../actions/actions_index';
 
-// import GameSquare from './gamepiece';
-
-
-
 class GameRow extends Component {
   constructor(props){
     super(props);
     this.state = {key: ''};
-
-    // let newRange = _.times(3, () => [0 + 1, '']);
-    // console.log(newRange);
   }
   
   renderSquares(rowSet, rowsIndex) {
     let rowMap = [];
     this.props.gameRow.forEach(function (squareArr, i) {  
-      // console.log(i)  
       rowMap = squareArr.row.map((square, squareIndex) => {
         return (
           <td 
@@ -38,7 +30,6 @@ class GameRow extends Component {
   }
 
   render() {
-    // console.log('props', this.state)
     return (
       <tr key="" className="game-row-test">
         {this.renderSquares()}     
@@ -47,7 +38,7 @@ class GameRow extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     gameRow: state.gameBoard,
     initialState: state.initialState
