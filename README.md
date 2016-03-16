@@ -12,7 +12,7 @@
 ##Requirements
 
 Add JavaScript so an actual tic­tac­toe game can be played starting with a blank board. 
-Each click on the board should alternate between X and O until someone wins or the game ends in a tie. Feel free to use jQuery or any JavaScript framework you like. Code quality is important. Please ensure that your code is DRY (Don’t Repeat Yourself), readable, formatted consistently, etc. Feel free to use online resources, but do not copy code. The code should work on the latest versions of Chrome, Firefox & Safari. Once you’re done, send a link to the Github repo to ff@eventbrite.com. Add JavaScript so an actual tic­tac­toe game can be played starting with a blank board. 
+Each click on the board should alternate between X and O until someone wins or the game ends in a tie. Feel free to use jQuery or any JavaScript framework you like. Code quality is important. Please ensure that your code is DRY (Don’t Repeat Yourself), readable, formatted consistently, etc. Feel free to use online resources, but do not copy code. The code should work on the latest versions of Chrome, Firefox & Safari. Add JavaScript so an actual tic­tac­toe game can be played starting with a blank board. 
 
 
 **Basic:**

@@ -5,8 +5,8 @@ import _ from 'lodash';
 
 import renderSquares from '../components/gamesquare';
 import renderRows from '../components/gamerow';
-import { squareClick, checkPlayCount, checkWin } from '../actions/actions_index';
 import * as actions from '../actions/actions_index';
+import { squareClick, checkPlayCount, checkWin } from '../actions/actions_index';
 
 class GameBoard extends Component {
   constructor(props){
@@ -21,10 +21,12 @@ class GameBoard extends Component {
     let props = this.props
     let row = event.target;
 
-    console.log(props)
+    console.log(props);
 
+    
     props.checkPlayCount(props.gameBoard);
     props.squareClick(row, props.gameBoard);
+  
   }
   
   // Render gameboard
