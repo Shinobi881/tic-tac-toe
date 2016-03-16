@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 
-import { squareClick } from '../actions/actions_index';
 import renderSquares from '../components/gamesquare';
 import renderRows from '../components/gamerow';
+import { squareClick, checkPlayCount, checkWin } from '../actions/actions_index';
+import * as actions from '../actions/actions_index';
 
 class GameBoard extends Component {
   constructor(props){
@@ -17,9 +18,13 @@ class GameBoard extends Component {
   
   // Handle clicking on specific rows  
   handleRowClick(event) {
+    let props = this.props
     let row = event.target;
 
-    this.props.squareClick(row, this.props.gameBoard);
+    console.log(props)
+
+    props.checkPlayCount(props.gameBoard);
+    props.squareClick(row, props.gameBoard);
   }
   
   // Render gameboard
@@ -48,7 +53,7 @@ const mapStateToProps = (state) => {
 
 // Map redux actions to this.prop
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({squareClick: squareClick}, dispatch)
+  return bindActionCreators(actions, dispatch);
 }
 
 // Connect props to actions

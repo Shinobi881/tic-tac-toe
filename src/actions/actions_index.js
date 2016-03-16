@@ -2,7 +2,7 @@ import _ from 'lodash';
 import ACTIONS from './action_types';
 
 // Dispatch the initial state action
-const initialState = () => {  
+export const initialState = () => {  
   let test = makeBoard(makeRows, 3);
 
   return {
@@ -12,7 +12,7 @@ const initialState = () => {
 };
 
 // Dsipatch the user input action
-const getBoardSize = (size = 3) => {
+export const getBoardSize = (size = 3) => {
   return {
     type: ACTIONS.GET_BOARD_SIZE,
     payload: size
@@ -20,7 +20,7 @@ const getBoardSize = (size = 3) => {
 };
 
 // Dispatch the board created event
-const boardCreated = (board = null) => {  
+export const boardCreated = (board = null) => {  
   return {
     type: ACTIONS.BOARD_CREATED,
     payload: board
@@ -28,15 +28,43 @@ const boardCreated = (board = null) => {
 };
 
 // dispatch the square click event
-const squareClick = (square) => {
+export const squareClick = (square) => {
   return {
     type: ACTIONS.SQUARE_CLICKED,
     payload: square
   };
 };
 
+export const checkPlayCount = (state) => {
+  return {
+    type: ACTIONS.CHECK_PLAY_COUNT,
+    payload: state
+  }
+}
+
+export const checkWin = (state) => {
+  return {
+    type: ACTIONS.CHECK_WIN,
+    payload: state
+  }
+}
+
+export const xWinner = (state) => {
+  return {
+    type: ACTIONS.X_WINNER,
+    payload: state
+  }
+}
+
+export const oWinner = (state) => {
+  return {
+    type: ACTIONS.O_WINNER,
+    payload: state
+  }
+}
+
 // Data for each game square
-const createSquares = (position) => {
+export const createSquares = (position) => {
   return {
     position: position,
     gamePiece: ''
@@ -44,7 +72,7 @@ const createSquares = (position) => {
 };
 
 
-const createRows = (rowSize) => {
+export const createRows = (rowSize) => {
   return _.times(rowSize, (i) => {
     return {
       squares: _.times(rowSize, (j) => createSquares(j)), index: i, 
@@ -55,7 +83,7 @@ const createRows = (rowSize) => {
 
 
 // Data for gameboard columns
-const createColumns = (colSize) => {
+export const createColumns = (colSize) => {
   return _.times(colSize, (i) => {
     return {
       position: i, piece: '', elements: [], 
@@ -65,7 +93,7 @@ const createColumns = (colSize) => {
 };
 
 // Data for gameboard diagonals
-const createDiagonals = (diagSize) => {
+export const createDiagonals = (diagSize) => {
   return [
     { negative: { elements: [], X_count: 0, O_count: 0, length: diagSize } },    
     { positive: { elements: [], X_count: 0, O_count: 0, length: diagSize } }
@@ -73,7 +101,7 @@ const createDiagonals = (diagSize) => {
 };
 
 // Creates data for the whole gameboard
-const createBoard = (boardSize = null) => {
+export const createBoard = (boardSize = null) => {
   boardSize = Number(boardSize);
   return {
     currentPiece: 'X', size: boardSize, tie: false, clickCount: 2, winner: false,
@@ -82,7 +110,7 @@ const createBoard = (boardSize = null) => {
   };  
 };
 
-const resetWin = () => {
+export const resetWin = () => {
   let rows = document.getElementsByTagName('tr');
   let squares = document.getElementsByTagName('td');
   
@@ -95,4 +123,3 @@ const resetWin = () => {
   });
 };
 
-export { boardCreated, getBoardSize, squareClick, initialState, createBoard, resetWin };

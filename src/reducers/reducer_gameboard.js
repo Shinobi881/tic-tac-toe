@@ -4,7 +4,7 @@ import * as utils from './reducer_utils';
 
 
 
-export default function(state = null, action) {
+export default (state = null, action) => {
   switch(action.type) {
     case 'BOARD_CREATED':
       return action.payload;

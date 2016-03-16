@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 
-import GameBoardReducer from './reducer_gameboard';
-// import BoardSizeReducer from './reducer_boardsize';
-import InitialState from './reducer_initial_state';
+import gameBoard from './reducer_gameboard';
+// import boardSize from './reducer_boardsize';
+import initialState from './reducer_initial_state';
+import gameLogic from './reducer_game_logic';
 
 const rootReducer = combineReducers({
-  gameBoard: GameBoardReducer,
-  // boardSize: BoardSizeReducer,
-  initialState: InitialState
+  gameBoard,
+  gameLogic,
+  // boardSize,
+  initialState
 });
 
 export default rootReducer;
