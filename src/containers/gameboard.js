@@ -21,10 +21,12 @@ class GameBoard extends Component {
   // Handle clicking on specific rows  
   handleRowClick(event) {
     let props = this.props
-    let row = event.target;
+    let square = event.target;
     
-    // props.checkPlayCount(props.gameBoard);
-    props.squareClick(row, props.gameBoard);
+    if (props.gameBoard.clickCount >= (props.gameBoard.size * 2)) {
+      props.checkWin(props.gameBoard);
+    }
+    props.squareClick(square, props.gameBoard);
   
   }
   

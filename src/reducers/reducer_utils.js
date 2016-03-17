@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // Copies the current state modifies it and returns 
 export const stateUtil = (input, el) => {
   const newState = {...input};
@@ -98,10 +100,10 @@ export const checkVertWin = (state, newLoad, els) => {
   if (checkWin) {
     let winningColumn = document
         .getElementsByClassName('col-' + els.square.id);
-    
-    for (let i = 0; i < winningColumn.length; i++) {
+
+    _.times(winningColumn.length, (i) => {
       winningColumn[i].classList.add('game-winner');
-    }
+    })
 
     newLoad.winner = true;
     alert('WINNER!')
@@ -119,8 +121,7 @@ export const diagonalWinChecker = (state, newLoad, direction) => {
   dObj[direction] = direction === 'negative' ? negDiagWin : posDiagWin;
   
   let XDiagWin = dObj[direction].X_count === dObj[direction].length,
-      ODiagWin = dObj[direction].O_count === dObj[direction].length;
-  
+      ODiagWin = dObj[direction].O_count === dObj[direction].length;  
 
   if (XDiagWin || ODiagWin ) {
     dObj[direction].elements.forEach((el) => el.classList.add('game-winner'));
@@ -132,19 +133,20 @@ export const diagonalWinChecker = (state, newLoad, direction) => {
 
 // Check if a square is playable
 export const checkState = (stateObj, actionLoad) => {
+  // We already have a winner, start a new game
   if (stateObj.winner) {
     alert('Please start a new game!');
     return stateObj;
-  }  
-  if (stateObj.tie) {
+  }  else if (stateObj.tie) {
     alert('Please start a new game!');
     return stateObj;
-  }
-  if (actionLoad.value) {
+  } else if (actionLoad.value) {
     console.log('Please choose another square!', stateObj.rows);
 
     return stateObj;
-  } 
+  } else {
+    return stateObj;
+  }
 }
 
 

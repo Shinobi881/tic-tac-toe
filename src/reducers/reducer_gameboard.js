@@ -2,6 +2,7 @@ import _ from 'lodash';
 import deepFreeze from 'deep-freeze';
 import * as redUtils from './reducer_utils';
 import * as actUtils from '../actions/action_utils';
+import { checkPlayCount } from '../actions/actions_index';
 
 
 
@@ -12,28 +13,27 @@ export default (state = null, action) => {
     case 'SQUARE_CLICKED':
 
       ////////////// Check if already clicked ////////////////
-      redUtils.checkState(state, action.payload);
+      // redUtils.checkState(state, action.payload);
 
-      //     console.log(state);
-      // // There's already a winner
-      // if (state.winner) {
-      //   alert('Please start a new game');
-      //   return state;
-      // }  
+      // There's already a winner
+      if (state.winner) {
+        alert('Please start a new game');
+        return state;
+      }  
 
-      // // Cat's game! Start a new one!
-      // if (state.tie) {
-      //   alert('please start a new game');
-      //   return state;
-      // }
+      // Cat's game! Start a new one!
+      if (state.tie) {
+        alert('please start a new game');
+        return state;
+      }
 
-      // // You already played this square
-      // if (action.payload.value) {
-      //   console.log('Click somewhere else', state.rows);
-      //   return state;
-      // } 
+      // You already played this square
+      if (action.payload.value) {
+        console.log('Click somewhere else', state.rows);
+        return state;
+      }       
 
-      
+      checkPlayCount(state);
 
       // State data for win checks
       let count = state.clickCount + 1;
