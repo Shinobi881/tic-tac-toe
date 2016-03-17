@@ -12,26 +12,26 @@ export default (state = null, action) => {
     case 'SQUARE_CLICKED':
 
       ////////////// Check if already clicked ////////////////
-      // redUtils.checkState(state, action.payload);
+      redUtils.checkState(state, action.payload);
 
-          console.log(state);
-      // There's already a winner
-      if (state.winner) {
-        alert('Please start a new game');
-        return state;
-      }  
+      //     console.log(state);
+      // // There's already a winner
+      // if (state.winner) {
+      //   alert('Please start a new game');
+      //   return state;
+      // }  
 
-      // Cat's game! Start a new one!
-      if (state.tie) {
-        alert('please start a new game');
-        return state;
-      }
+      // // Cat's game! Start a new one!
+      // if (state.tie) {
+      //   alert('please start a new game');
+      //   return state;
+      // }
 
-      // You already played this square
-      if (action.payload.value) {
-        console.log('Click somewhere else', state.rows);
-        return state;
-      } 
+      // // You already played this square
+      // if (action.payload.value) {
+      //   console.log('Click somewhere else', state.rows);
+      //   return state;
+      // } 
 
       
 

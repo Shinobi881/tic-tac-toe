@@ -9,10 +9,8 @@ export default (data) => {
         key={square.position}
         id={square.position} 
         value={square.gamePiece}
-      >{square.gamePiece}
-        <div>        
-          <Paper zDepth={5}  rounded={false}/>
-        </div>
+      >
+        {square.gamePiece}
       </td>
     );
   });
