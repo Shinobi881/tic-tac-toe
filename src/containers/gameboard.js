@@ -5,9 +5,11 @@ import _ from 'lodash';
 
 import renderSquares from '../components/gamesquare';
 import renderRows from '../components/gamerow';
-import * as actions from '../actions/actions_index';
-import { squareClick, checkPlayCount, checkWin } from '../actions/actions_index';
 
+import * as actions from '../actions/actions_index';
+import * as actUtils from '../actions/action_utils';
+
+// Gameboard container
 class GameBoard extends Component {
   constructor(props){
     super(props);
@@ -21,7 +23,7 @@ class GameBoard extends Component {
     let props = this.props
     let row = event.target;
     
-    props.checkPlayCount(props.gameBoard);
+    // props.checkPlayCount(props.gameBoard);
     props.squareClick(row, props.gameBoard);
   
   }
@@ -32,7 +34,8 @@ class GameBoard extends Component {
       return <h1>Please choose a gameboard size!</h1>
     }
     return (
-      <table className="game-board" selectable={this.state.selectable}
+      <table className="game-board" 
+        selectable={this.state.selectable}
         onClick={this.handleRowClick.bind(this)}
       >
         <tbody>        

@@ -5,9 +5,10 @@ import { bindActionCreators } from 'redux';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/Raised-Button';
 
-import { boardCreated, getBoardSize, createBoard, resetWin } from '../actions/actions_index';
+import { boardCreated, getBoardSize } from '../actions/actions_index';
+import { createBoard, resetWin } from '../actions/action_utils';
 
-// This class allows user to choose a board size, create, and start a new game
+// Form for using getting the gameboard size
 class BoardSize extends Component {
   constructor(props) {
     super(props);

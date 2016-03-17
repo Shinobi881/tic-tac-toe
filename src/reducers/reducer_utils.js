@@ -130,4 +130,21 @@ export const diagonalWinChecker = (state, newLoad, direction) => {
   }
 }
 
+// Check if a square is playable
+export const checkState = (stateObj, actionLoad) => {
+  if (stateObj.winner) {
+    alert('Please start a new game!');
+    return stateObj;
+  }  
+  if (stateObj.tie) {
+    alert('Please start a new game!');
+    return stateObj;
+  }
+  if (actionLoad.value) {
+    console.log('Please choose another square!', stateObj.rows);
+
+    return stateObj;
+  } 
+}
+
 
