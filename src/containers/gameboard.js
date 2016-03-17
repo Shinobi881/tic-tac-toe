@@ -20,9 +20,6 @@ class GameBoard extends Component {
   handleRowClick(event) {
     let props = this.props
     let row = event.target;
-
-    console.log(props);
-
     
     props.checkPlayCount(props.gameBoard);
     props.squareClick(row, props.gameBoard);

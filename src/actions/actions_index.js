@@ -11,7 +11,7 @@ export const initialState = () => {
   };
 };
 
-// Dsipatch the user input action
+// Dispatch the user input action
 export const getBoardSize = (size = 3) => {
   return {
     type: ACTIONS.GET_BOARD_SIZE,
@@ -27,7 +27,7 @@ export const boardCreated = (board = null) => {
   };
 };
 
-// dispatch the square click event
+// Dispatch the square click event
 export const squareClick = (square) => {
   return {
     type: ACTIONS.SQUARE_CLICKED,

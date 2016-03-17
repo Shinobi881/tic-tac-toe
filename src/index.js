@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 import App from './app';
 import './stylesheets/main.scss';
-import reducers from './reducers';
+import reducers from './reducers/reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
