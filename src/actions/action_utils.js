@@ -17,6 +17,8 @@ export const createSquares = (position) => {
 
 export const createRows = (rowSize) => {
   return _.times(rowSize, (i) => {
+    let testArr = [];
+    
     return {
       squares: _.times(rowSize, (j) => createSquares(j)), index: i, 
       rowClickCount: 0, count: 0, length: rowSize, X_count: 0, O_count: 0

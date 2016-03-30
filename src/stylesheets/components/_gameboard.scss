@@ -1,6 +1,13 @@
 .game-board {
   max-width: 100%;
-  max-width: 100%;  
+  max-width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+  table-layout: auto;
+  // tbody {
+  //   display: table-row-group;
+  // }  
+  position: relative;
 }
 
 .game-winner {
@@ -8,7 +15,9 @@
 }
 
 .game-container {
-  margin: auto;
-  width: 40%;
-  height: auto;
+  display: table;
+  
+
+  margin: 0 auto;  
+  max-width: 80%;  
 }

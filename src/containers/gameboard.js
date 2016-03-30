@@ -37,7 +37,6 @@ class GameBoard extends Component {
     }
     return (
       <table className="game-board" 
-        selectable={this.state.selectable}
         onClick={this.handleRowClick.bind(this)}
       >
         <tbody>        
