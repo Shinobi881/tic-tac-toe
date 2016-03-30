@@ -53,7 +53,7 @@ class BoardSize extends Component {
           onChange={this.onInputChange.bind(this)}
         />
         <span className="play-game">
-          <RaisedButton secondary={true} type="submit" label="New Game" className="board-size" />
+          <RaisedButton primary={true} type="submit" label="New Game" className="board-size" />
         </span>
       </form>
     )

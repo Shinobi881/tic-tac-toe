@@ -4,7 +4,7 @@
   "description": "Tic-tac-toe game",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node --presets es2015 server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack ./webpack.dev.config.js"
   },
