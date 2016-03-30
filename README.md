@@ -81,4 +81,4 @@ Each click on the board should alternate between X and O until someone wins or t
 
 1. `$ npm i`
 2. `$ npm start`
-3. Then open a web browser to localhost:3000/
+3. Then open a web browser to localhost:3000
